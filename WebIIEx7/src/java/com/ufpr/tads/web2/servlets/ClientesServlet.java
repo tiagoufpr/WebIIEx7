@@ -137,6 +137,17 @@ public class ClientesServlet extends HttpServlet {
                             ClientesFacade.inserir(cliente);
                             response.sendRedirect(request.getContextPath() + "/ClientesServlet");
                             break;
+                        case "formCliente":
+                            id = Integer.parseInt(request.getParameter("id"));
+                            cliente = ClientesFacade.buscar(id);
+                            request.setAttribute("alterar", cliente);
+                            List<Cidade> cidades3 = CidadesFacade.buscarTodos();
+                            request.setAttribute("listacidades", cidades3);
+                            List<Estado> estados3 = EstadosFacade.buscarTodos();
+                            request.setAttribute("listaestados", estados3);
+                            rd = getServletContext().getRequestDispatcher("/clientesAlterar.jsp");
+                            rd.forward(request, response);
+                            break;
                         default:
                             clientes = ClientesFacade.buscarTodos();
                             request.setAttribute("listar", clientes);

@@ -88,6 +88,10 @@
             <br>
             <a href="ClientesServlet?action=formNew"  style="color: darkblue">Novo</a> |
             <a href ='LogoutServlet' style="color: darkblue">Encerrar sessão</a>
+            
+            </br></br> <a href ='ClientesServlet?action=formCliente&id=1' style="color: darkblue">Form Cliente - Existente</a>
+            
+            </br></br> <a href ='ClientesServlet?action=formCliente&id=20' style="color: darkblue">Form Cliente - Novo</a>
 
             <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
                 <jsp:useBean id="configuracao" class="com.ufpr.tads.web2.beans.ConfigBean" scope="application" />
