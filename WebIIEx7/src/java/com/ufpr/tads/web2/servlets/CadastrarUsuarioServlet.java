@@ -5,6 +5,7 @@
  */
 package com.ufpr.tads.web2.servlets;
 
+import com.ufpr.tads.web2.dao.UsuarioDAO;
 import com.ufpr.tads.web2.beans.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;

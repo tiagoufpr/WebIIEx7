@@ -4,6 +4,7 @@
     Author     : tiago
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ufpr.tads.web2.beans.Usuario"%>
 <%@page import="com.ufpr.tads.web2.servlets.UsuarioDAO"%>
@@ -29,16 +30,13 @@
     </style>
     <body>
         <jsp:useBean id="login" class="com.ufpr.tads.web2.beans.LoginBean" scope="session"/>
+
+        <c:if test="${empty sessionScope.login}">
+            <jsp:forward page="/index.jsp">
+                <jsp:param name="msg" value="Usuário deve se autenticar para acessar o sistema"/>
+            </jsp:forward>
+        </c:if>
         
-        <%
-            LoginBean loginBean = (LoginBean) session.getAttribute("login");
-            
-            if(loginBean.getNome_usuario() == null){
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-                request.setAttribute("msg", "Usuário deve se autenticar para acessar o sistema.");
-                rd.forward(request, response);
-            }
-        %>
         <nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
           <div class="w3-container">
             <h3 class="w3-padding-64"><b>Menu</b></h3>

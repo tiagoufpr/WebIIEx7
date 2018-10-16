@@ -6,6 +6,7 @@ package com.ufpr.tads.web2.servlets;
  * and open the template in the editor.
  */
 
+import com.ufpr.tads.web2.dao.UsuarioDAO;
 import com.ufpr.tads.web2.beans.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;

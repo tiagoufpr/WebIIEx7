@@ -13,6 +13,27 @@ insert into tb_usuario (login_usuario, senha_usuario, nome_usuario) values ('tia
 insert into tb_usuario (login_usuario, senha_usuario, nome_usuario) values ('itay', 'senha', 'Itay');
 insert into tb_usuario (login_usuario, senha_usuario, nome_usuario) values ('admin', 'admin', 'Administrador');
 
+
+create table tb_estado (
+id_estado serial primary key,
+nome_estado varchar(100)
+);
+
+insert into tb_estado (id_estado, nome_estado) values (1, 'PR');
+insert into tb_estado (id_estado, nome_estado) values (2, 'SP');
+
+
+create table tb_cidade (
+id_cidade serial primary key,
+nome_cidade varchar(100)
+);
+
+insert into tb_cidade (id_cidade, nome_cidade) values (1, 'Curitiba');
+insert into tb_cidade (id_cidade, nome_cidade) values (2, 'São Paulo');
+
+
+DROP table tb_cliente;
+
 create table tb_cliente (
 id_cliente serial primary key,
 cpf_cliente varchar(100),
@@ -22,37 +43,41 @@ data_cliente date,
 rua_cliente varchar(100),
 nr_cliente integer,
 cep_cliente char(8),
-id_cidade serial, FOREIGN KEY(fk_cidade) REFERENCES tb_cidade(id_cidade),
-id_estado serial, FOREIGN KEY(fk_estado) REFERENCES tb_estado(id_estado)
+id_cidade integer,
+id_estado integer
 );
 
-create table tb_estado (
-id_estado serial primary key,
-nome_estado varchar(100)
-);
 
-create table tb_cidade (
-id_cidade serial primary key,
-nome_cidade varchar(100)
-);
 
-insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, cidade_cliente, uf_cliente) values (
-'Kaique Augusto Moraes', '48086916804', 'kaiqueam@gmail.com', '1996-12-01', '72225055', 'Quadra QNN 5 Conjunto E', 745, 'Brasília', 'DF');
-insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, cidade_cliente, uf_cliente) values (
-'Débora Antonella Larissa da Silva', '41398900028', 'deb-ant@gmail.com', '1982-12-02', '75135820', 'Rua Rafael Braga Tibúrcio', 183, 'Anápolis', 'GO');
-insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, cidade_cliente, uf_cliente) values (
-'Bento Vitor da Costa', '52104983878', 'bento_vitorc@hotmail.com', '23/11/1991', '72861015', 'Quadra Quadra 2', 977, 'Novo Gama', 'GO');
-insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, cidade_cliente, uf_cliente) values (
-'Nathan Samuel Alexandre Castro', '41828887153', 'nathansamuelac@gmail.com', '22/11/1993', '69915276', 'Rua Mário Maia', 905, 'Rio Branco', 'AC');
-insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, cidade_cliente, uf_cliente) values (
-'Roberto Sérgio Jorge dos Santos', '27883846299', 'roberto_sjs@outlook.com.br', '27/01/1985', '81925410', 'Rua Jussara', 22, 'Curitiba', 'PR');
-insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, cidade_cliente, uf_cliente) values (
-'Pietra Renata Emanuelly da Conceição', '29127186946', 'p-renata-ec@gmail.com', '16/04/1992', '81490470', 'Rua Adolpho Bertoldi', 575, 'Curitiba', 'PR');
-insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, cidade_cliente, uf_cliente) values (
-'Augusto Thomas Moraes', '54570451969', 'augusto_tm@gmail.com', '01/02/1985', '81480149', 'Rua João Job de Souza', 202, 'Curitiba', 'PR');
-insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, cidade_cliente, uf_cliente) values (
-'Aline Alana da Silva', '30957449941', 'alinealanas@gmail.com', '06/04/1992', '81720192', 'Rua Mônica Grochowski', 299, 'Curitiba', 'PR');
-insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, cidade_cliente, uf_cliente) values (
-'Nicole Maria Laís Ramos', '76404694905', 'nicole_mlr@gmail.com', '20/07/1992', '82015290', 'Rua Luiz Braille', 773, 'Curitiba', 'PR');
-insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, cidade_cliente, uf_cliente) values (
-'Tereza Sandra Fernandes', '99824119930', 'tereza_sandraf@gmail.com', '06/03/1984', '82220560', 'Rua João Baptista Mayer', 437, 'Curitiba', 'PR');
+insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
+'Tiago', '2456856', 'tiago@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+
+insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
+'Itay', '2456856', 'itay@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+
+insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
+'Herik', '2456856', 'herik@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+
+insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
+'Razer', '2456856', 'razer@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+
+insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
+'Rafaela', '2456856', 'rafaela@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+
+insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
+'Neves', '2456856', 'neves@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+
+insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
+'Sandramara', '2456856', 'sandramara@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+
+insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
+'Jerozina', '2456856', 'jeroniza@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+
+insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
+'Tommy', '2456856', 'tommy@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+
+insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
+'Claisa', '2456856', 'claisa@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+
+insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
+'Bianca', '2456856', 'bianca@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
