@@ -33,6 +33,21 @@
             </jsp:forward>
         </c:if>
         
+     
+        <p id="demo"></p>
+        <script>
+        function jsRemover(i){
+            var r=confirm("Deseja Remover?");
+
+            if (r==true)
+              window.location.href = "ClientesServlet?action=remove&id=" +i;
+
+            document.getElementById("demo").innerHTML=x;
+        }
+        </script>
+        
+       
+        
         <nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
           <div class="w3-container">
             <h3 class="w3-padding-64"><b>Menu</b></h3>
@@ -65,7 +80,7 @@
                     <td> ${cliente.email_cliente} </td>
                     <td> <a href="ClientesServlet?action=show&id=${cliente.id_cliente}"><img src="Imagens/view.jpg" height="25" width="25px"></a></td>
                     <td> <a href="ClientesServlet?action=formUpdate&id=${cliente.id_cliente}"><img src="Imagens/update.png" height="25" width="25px"></a></td>
-                    <td> <a href="ClientesServlet?action=remove&id=${cliente.id_cliente}"><img src="Imagens/remove.png" height="25" width="25px"></a></td>
+                    <td> <a href="#void" onclick="jsRemover(${cliente.id_cliente});"><img src="Imagens/remove.png" height="25" width="25px"></a></td>
                     </tr>
                 </c:forEach>
             </table>
