@@ -33,7 +33,7 @@ public class Estado {
         return nome_estado;
     }
 
-    public void setNome_estado(String nome_cidade) {
+    public void setNome_estado(String nome_estado) {
         this.nome_estado = nome_estado;
     }
 }

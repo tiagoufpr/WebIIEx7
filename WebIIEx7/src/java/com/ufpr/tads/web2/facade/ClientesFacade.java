@@ -16,12 +16,12 @@ import java.util.List;
 public class ClientesFacade {
     public static void inserir(Cliente cliente) throws SQLException, ClassNotFoundException {
         ClienteDAO dao = new ClienteDAO();
-        dao.insertCliente(cliente.getCpf_cliente(), cliente.getNome_cliente(), cliente.getEmail_cliente(), cliente.getData_cliente(), cliente.getRua_cliente(), cliente.getNr_cliente(), cliente.getCep_cliente(), cliente.getCidade_cliente(), cliente.getUf_cliente());
+        dao.insertCliente(cliente.getCpf_cliente(), cliente.getNome_cliente(), cliente.getEmail_cliente(), cliente.getData_cliente(), cliente.getRua_cliente(), cliente.getNr_cliente(), cliente.getCep_cliente(), cliente.getCidade_cliente(), cliente.getEstado_cliente());
     }
 
     public static void alterar(Cliente cliente) throws SQLException, ClassNotFoundException {
         ClienteDAO dao = new ClienteDAO();
-        dao.alterarCliente(cliente.getCpf_cliente(), cliente.getNome_cliente(), cliente.getEmail_cliente(), cliente.getData_cliente(), cliente.getRua_cliente(), cliente.getNr_cliente(), cliente.getCep_cliente(), cliente.getCidade_cliente(), cliente.getUf_cliente(), cliente.getId_cliente());
+        dao.alterarCliente(cliente.getCpf_cliente(), cliente.getNome_cliente(), cliente.getEmail_cliente(), cliente.getData_cliente(), cliente.getRua_cliente(), cliente.getNr_cliente(), cliente.getCep_cliente(), cliente.getCidade_cliente(), cliente.getEstado_cliente(), cliente.getId_cliente());
     }
 
     public static Cliente buscar(int id) throws SQLException, ClassNotFoundException {

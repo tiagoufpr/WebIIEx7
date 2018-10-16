@@ -57,8 +57,8 @@ public class AlterarClienteServlet extends HttpServlet {
                 String num = (String) request.getParameter("numero");
                 int numero = Integer.parseInt(num);
                 String cep = (String) request.getParameter("cep");
-                String cidade = (String) request.getParameter("cidade");
-                String uf = (String) request.getParameter("uf");
+                int cidade = Integer.parseInt((String) request.getParameter("cidade"));
+                int uf = Integer.parseInt((String) request.getParameter("uf"));
                 String idString = (String) request.getParameter("id");
                 int id = Integer.parseInt(idString);
                         

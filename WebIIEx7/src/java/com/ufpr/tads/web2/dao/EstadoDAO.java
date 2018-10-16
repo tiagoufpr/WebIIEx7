@@ -28,7 +28,7 @@ public class EstadoDAO {
 
     }
 
-    public List<Estado> selectEstado() throws SQLException {
+    public List<Estado> selectEstados() throws SQLException {
         
         List<Estado> resultados = new ArrayList<>();
         

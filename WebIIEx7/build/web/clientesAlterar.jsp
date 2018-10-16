@@ -40,8 +40,27 @@
             Rua: <input type="text" name="rua" value= <jsp:getProperty name="alterar" property="rua_cliente"/> ><br/>
             Número: <input type="text" name="numero" value= <jsp:getProperty name="alterar" property="nr_cliente"/> ><br/>
             CEP: <input type="text" name="cep" value= <jsp:getProperty name="alterar" property="cep_cliente"/> ><br/>
-            Cidade: <input type="text" name="cidade" value= <jsp:getProperty name="alterar" property="cidade_cliente"/> ><br/>
-            UF: <input type="text" name="uf" value= <jsp:getProperty name="alterar" property="uf_cliente"/> ><br/><br/>
+            
+            Cidade:
+            <select name="cidade" <jsp:getProperty name="alterar" property="cidade_cliente"/>>
+                <option value="">Selecione</option>
+                    <c:forEach items="${listacidades}" var="cidade">  
+                        <option value="${cidade.id_cidade}">${cidade.nome_cidade}</option>
+                    </c:forEach>
+            </select>
+      
+            <br/>
+  
+            Estado:
+            <select name="uf" <jsp:getProperty name="alterar" property="estado_cliente"/>>
+                <option value="">Selecione</option>
+                    <c:forEach items="${listaestados}" var="estado">  
+                        <option value="${estado.id_estado}">${estado.nome_estado}</option>
+                    </c:forEach>
+            </select>
+   
+           <br/><br/>
+            
             <input type="submit" value="Alterar"> <input type="submit" value="Cancelar" formaction="ClientesServlet">
         </form>
         

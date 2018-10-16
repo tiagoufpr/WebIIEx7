@@ -5,10 +5,14 @@
  */
 package com.ufpr.tads.web2.servlets;
 
+import com.ufpr.tads.web2.beans.Cidade;
 import com.ufpr.tads.web2.beans.Cliente;
+import com.ufpr.tads.web2.beans.Estado;
 import com.ufpr.tads.web2.beans.LoginBean;
 import com.ufpr.tads.web2.dao.ClienteDAO;
+import com.ufpr.tads.web2.facade.CidadesFacade;
 import com.ufpr.tads.web2.facade.ClientesFacade;
+import com.ufpr.tads.web2.facade.EstadosFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -74,6 +78,10 @@ public class ClientesServlet extends HttpServlet {
                             id = Integer.parseInt(request.getParameter("id"));
                             cliente = ClientesFacade.buscar(id);
                             request.setAttribute("alterar", cliente);
+                            List<Cidade> cidades = CidadesFacade.buscarTodos();
+                            request.setAttribute("listacidades", cidades);
+                            List<Estado> estados = EstadosFacade.buscarTodos();
+                            request.setAttribute("listaestados", estados);
                             rd = getServletContext().getRequestDispatcher("/clientesAlterar.jsp");
                             rd.forward(request, response);
                             break;
@@ -98,13 +106,19 @@ public class ClientesServlet extends HttpServlet {
                             cliente.setRua_cliente(request.getParameter("rua"));
                             int numero = Integer.parseInt(request.getParameter("nr"));
                             cliente.setNr_cliente(numero);
-                            cliente.setCidade_cliente(request.getParameter("cidade"));
-                            cliente.setUf_cliente(request.getParameter("uf"));
+                            cliente.setCidade_cliente(Integer.parseInt(request.getParameter("cidade")));
+                            cliente.setEstado_cliente(Integer.parseInt(request.getParameter("uf")));
                             ClientesFacade.alterar(cliente);
                             response.sendRedirect(request.getContextPath() + "/ClientesServlet");
                             break;
                         case "formNew":
-                            response.sendRedirect(request.getContextPath() + "/clientesNovo.jsp");
+                            List<Cidade> cidades2 = CidadesFacade.buscarTodos();
+                            request.setAttribute("listacidades", cidades2);
+                            List<Estado> estados2 = EstadosFacade.buscarTodos();
+                            request.setAttribute("listaestados", estados2);
+                            
+                            rd = getServletContext().getRequestDispatcher("/clientesNovo.jsp");
+                            rd.forward(request, response);
                             break;
                         case "new":
                             cliente = new Cliente();
@@ -118,8 +132,8 @@ public class ClientesServlet extends HttpServlet {
                             cliente.setRua_cliente(request.getParameter("rua"));
                             int nr = Integer.parseInt(request.getParameter("numero"));
                             cliente.setNr_cliente(nr);
-                            cliente.setCidade_cliente(request.getParameter("cidade"));
-                            cliente.setUf_cliente(request.getParameter("uf"));
+                            cliente.setCidade_cliente(Integer.parseInt(request.getParameter("cidade")));
+                            cliente.setEstado_cliente(Integer.parseInt(request.getParameter("uf")));
                             ClientesFacade.inserir(cliente);
                             response.sendRedirect(request.getContextPath() + "/ClientesServlet");
                             break;

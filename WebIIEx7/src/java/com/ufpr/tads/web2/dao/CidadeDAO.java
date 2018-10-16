@@ -28,7 +28,7 @@ public class CidadeDAO {
 
     }
 
-    public List<Cidade> selectCidade() throws SQLException {
+    public List<Cidade> selectCidades() throws SQLException {
         
         List<Cidade> resultados = new ArrayList<>();
         

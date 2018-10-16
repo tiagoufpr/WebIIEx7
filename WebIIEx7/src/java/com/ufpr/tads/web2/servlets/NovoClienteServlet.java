@@ -56,8 +56,8 @@ public class NovoClienteServlet extends HttpServlet {
                 String num = (String) request.getParameter("numero");
                 int numero = Integer.parseInt(num);
                 String cep = (String) request.getParameter("cep");
-                String cidade = (String) request.getParameter("cidade");
-                String uf = (String) request.getParameter("uf");
+                int cidade = Integer.parseInt((String) request.getParameter("cidade"));
+                int uf = Integer.parseInt((String) request.getParameter("uf"));
                         
                 ClienteDAO dao = new ClienteDAO();
                 dao.insertCliente(cpf, nome, email, data, rua, numero, cep, cidade, uf);

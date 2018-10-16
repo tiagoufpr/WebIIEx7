@@ -37,8 +37,28 @@
             Rua: <input type="text" name="rua" ><br/>
             Número: <input type="text" name="numero" ><br/>
             CEP: <input type="text" name="cep" ><br/>
-            Cidade: <input type="text" name="cidade" ><br/>
-            UF: <input type="text" name="uf" ><br/><br/>
+      
+            
+            Cidade:
+            <select name="cidade">
+                <option value="">Selecione</option>
+                    <c:forEach items="${listacidades}" var="cidade">  
+                        <option value="${cidade.id_cidade}">${cidade.nome_cidade}</option>
+                    </c:forEach>
+            </select>
+      
+            <br/>
+  
+            Estado:
+            <select name="uf" >
+                <option value="">Selecione</option>
+                    <c:forEach items="${listaestados}" var="estado">  
+                        <option value="${estado.id_estado}">${estado.nome_estado}</option>
+                    </c:forEach>
+            </select>
+               
+            <br/><br/>
+            
             <input type="submit" value="Salvar"> <input type="submit" value="Cancelar" formaction="ClientesServlet">
         </form>
         

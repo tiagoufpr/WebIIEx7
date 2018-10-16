@@ -7,7 +7,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ufpr.tads.web2.beans.Usuario"%>
-<%@page import="com.ufpr.tads.web2.servlets.UsuarioDAO"%>
+<%@page import="com.ufpr.tads.web2.dao.UsuarioDAO"%>
 <%@page import="com.ufpr.tads.web2.beans.LoginBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -21,8 +21,8 @@ public class Cliente implements Serializable{
     private String rua_cliente;
     private int nr_cliente;
     private String cep_cliente;
-    private String cidade_cliente;
-    private String uf_cliente;
+    private int id_cidade;
+    private int id_estado;
     
     public Cliente(){
     }
@@ -91,20 +91,20 @@ public class Cliente implements Serializable{
         this.cep_cliente = cep_cliente;
     }
 
-    public String getCidade_cliente() {
-        return cidade_cliente;
+    public int getCidade_cliente() {
+        return id_cidade;
     }
 
-    public void setCidade_cliente(String cidade_cliente) {
-        this.cidade_cliente = cidade_cliente;
+    public void setCidade_cliente(int id_cidade) {
+        this.id_cidade = id_cidade;
     }
 
-    public String getUf_cliente() {
-        return uf_cliente;
+    public int getEstado_cliente() {
+        return id_estado;
     }
 
-    public void setUf_cliente(String uf_cliente) {
-        this.uf_cliente = uf_cliente;
+    public void setEstado_cliente(int id_estado) {
+        this.id_estado = id_estado;
     }
     
 }
