@@ -10,6 +10,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.ufpr.tads.web2.beans.LoginBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -29,25 +30,29 @@
         </c:if>
           
         
-        <c:catch var = "alterar"/>
-            
-     
-            
-        <c:if test2="${alterar != null}">
+        
+        <%
+            Cliente cliente = new Cliente();
+            pageContext.getAttribute("alterar");
+        %> 
+        
+        
+      
+        <c:if test="${cliente != null}">
             <h1>Dados do cliente</h1>
 
             <form action="ClientesServlet?action=update" method="POST">
                 Nome: <input type="text" name="nome" value=<${alterar.nome_usuario}> > <br/>
                 Id: <input type="text" name="id" value=<${alterar.nome_usuario}> ><br/>
-                CPF: <input type="text" name="cpf" value= <jsp:getProperty name="alterar" property="cpf_cliente"/> ><br/>
-                Email: <input type="text" name="email" value= <jsp:getProperty name="alterar" property="email_cliente"/>><br/>
-                Data: <input type="text" name="data" value= <jsp:getProperty name="alterar" property="data_cliente"/> ><br/>
-                Rua: <input type="text" name="rua" value= <jsp:getProperty name="alterar" property="rua_cliente"/> ><br/>
-                Número: <input type="text" name="numero" value= <jsp:getProperty name="alterar" property="nr_cliente"/> ><br/>
-                CEP: <input type="text" name="cep" value= <jsp:getProperty name="alterar" property="cep_cliente"/> ><br/>
+                CPF: <input type="text" name="cpf" value= <${alterar.cpf_cliente}> ><br/>
+                Email: <input type="text" name="email" value= <${alterar.email_cliente}> ><br/>
+                Data: <input type="text" name="data" value= <${alterar.data_cliente}> ><br/>
+                Rua: <input type="text" name="rua" value= <${alterar.rua_cliente}> ><br/>
+                Número: <input type="text" name="numero" value= <${alterar.nr_cliente}> ><br/>
+                CEP: <input type="text" name="cep" value= <${alterar.cep_cliente}> ><br/>
 
                 Cidade:
-                <select name="cidade" <jsp:getProperty name="alterar" property="cidade_cliente"/>>
+                <select name="cidade">
                     <option value="">Selecione</option>
                         <c:forEach items="${listacidades}" var="cidade">  
                             <option value="${cidade.id_cidade}">${cidade.nome_cidade}</option>
@@ -57,19 +62,19 @@
                 <br/>
 
                 Estado:
-                <select name="uf" <jsp:getProperty name="alterar" property="estado_cliente"/>>
+                <select name="uf" >
                     <option value="">Selecione</option>
                         <c:forEach items="${listaestados}" var="estado">  
                             <option value="${estado.id_estado}">${estado.nome_estado}</option>
                         </c:forEach>
                 </select>
 
-               <br/><br/>
-
                 <input type="submit" value="Alterar"> <input type="submit" value="Cancelar" formaction="ClientesServlet">
             </form>
-         
-        <c:else>
+        </c:if>
+            
+            
+        <c:if test="${cliente == null}">
 
             <h1>Novo do cliente</h1>
 
@@ -106,7 +111,7 @@
                 <input type="submit" value="Salvar"> <input type="submit" value="Cancelar" formaction="ClientesServlet">
             </form>
         </c:if>
-        </jsp:useBean>
+        
             
     </body>
 </html>
