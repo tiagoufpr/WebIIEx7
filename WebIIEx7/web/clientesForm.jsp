@@ -27,17 +27,18 @@
                 <jsp:param name="msg" value="Usuário deve se autenticar para acessar o sistema"/>
             </jsp:forward>
         </c:if>
+          
         
-        <h1>Dados do cliente</h1>
-        
-        <jsp:useBean id="alterar" class="com.ufpr.tads.web2.beans.Cliente" scope="application">
+        <c:catch var = "alterar"/>
             
-        S{(<jsp:getProperty name="alterar" property="*"/> != null)
+     
+            
+        <c:if test2="${alterar != null}">
             <h1>Dados do cliente</h1>
 
             <form action="ClientesServlet?action=update" method="POST">
-                Nome: <input type="text" name="nome" value=<jsp:getProperty name="alterar" property="nome_cliente"/> > <br/>
-                Id: <input type="text" name="id" value=<jsp:getProperty name="alterar" property="id_cliente"/> ><br/>
+                Nome: <input type="text" name="nome" value=<${alterar.nome_usuario}> > <br/>
+                Id: <input type="text" name="id" value=<${alterar.nome_usuario}> ><br/>
                 CPF: <input type="text" name="cpf" value= <jsp:getProperty name="alterar" property="cpf_cliente"/> ><br/>
                 Email: <input type="text" name="email" value= <jsp:getProperty name="alterar" property="email_cliente"/>><br/>
                 Data: <input type="text" name="data" value= <jsp:getProperty name="alterar" property="data_cliente"/> ><br/>
@@ -68,7 +69,7 @@
                 <input type="submit" value="Alterar"> <input type="submit" value="Cancelar" formaction="ClientesServlet">
             </form>
          
-        :
+        <c:else>
 
             <h1>Novo do cliente</h1>
 
@@ -104,7 +105,7 @@
 
                 <input type="submit" value="Salvar"> <input type="submit" value="Cancelar" formaction="ClientesServlet">
             </form>
-        }
+        </c:if>
         </jsp:useBean>
             
     </body>

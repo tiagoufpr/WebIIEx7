@@ -145,7 +145,7 @@ public class ClientesServlet extends HttpServlet {
                             request.setAttribute("listacidades", cidades3);
                             List<Estado> estados3 = EstadosFacade.buscarTodos();
                             request.setAttribute("listaestados", estados3);
-                            rd = getServletContext().getRequestDispatcher("/clientesAlterar.jsp");
+                            rd = getServletContext().getRequestDispatcher("/clientesForm.jsp");
                             rd.forward(request, response);
                             break;
                         default:
