@@ -20,44 +20,32 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
         <script type="text/javascript" >
-        $(document).ready(function() {
-            alert ("1");
-        $( "#estado" ).change(function() {
-            alert ("2");
-        getCidades();
-        });
-        });
-        
+
         function getCidades(){
-            alert ("3");
             var estadoId = $("#estado").val();
             var url = "AJAXServlet";
             $.ajax({
-            url : url, // URL da sua Servlet
-            data : {
-            estadoId : estadoId
-            }, // Parâmetro passado para a Servlet
-            dataType : 'json',
-            success : function(data) {
-            // Se sucesso, limpa e preenche a combo de cidade
-            // alert(JSON.stringify(data));
-            alert ("4");
-            
-            $("#cidadeAJAX").empty();
-            $.each(data, function(i, obj) {
-                alert ("5");
-            $("#cidadeAJAX").append('<option value=' + obj.id_cidade + '>' + obj.nome_cidade + '</option>');
-            alert ("6");
-            
-            });
-            
+                url : url, // URL da sua Servlet
+                data : {
+                estadoId : estadoId
+                }, // Parâmetro passado para a Servlet
+                dataType : 'json',
+                success : function(data) {
+                // Se sucesso, limpa e preenche a combo de cidade
+                // alert(JSON.stringify(data));
+                $("#cidadeAJAX").empty();
+                $.each(data, function(i, obj) {
+                $("#cidadeAJAX").append('<option value=' + obj.id_cidade + '>' + obj.nome_cidade + '</option>');
+                });
 
-            },
-            error : function(request, textStatus, errorThrown) {
-            alert(request.status + ', Error: ' + request.statusText);
-            // Erro
-            }
+
+                },
+                error : function(request, textStatus, errorThrown) {
+                alert(request.status + ', Error: ' + request.statusText);
+                            alert ("Erro AJAX");
+                }
             });
         }
         </script>
@@ -137,7 +125,7 @@
                 
                 
                 Estado:
-                <select name="uf" onChange="getCidades();">
+                <select name="uf" id ="estado" onChange="getCidades();">
                     <option value="">Selecione</option>
                         <c:forEach items="${listaestados}" var="estado">  
                             <option value="${estado.id_estado}">${estado.nome_estado}</option>
@@ -145,18 +133,9 @@
                 </select>
                 <br/>
                 
-                Cidade:
-                <select name="cidade">
-                    <option value="">Selecione</option>
-                        <c:forEach items="${listacidades}" var="cidade">  
-                            <option value="${cidade.id_cidade}">${cidade.nome_cidade}</option>
-                        </c:forEach>
-                </select>
-                <br/>
-                
-                
+
                 Cidade AJAX:
-                <select name="cidadeAJAX">
+                <select name="cidadeAJAX" id="cidadeAJAX">
                     <option value="">Selecione</option>
                 </select>
                 <br/>
