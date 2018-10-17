@@ -19,6 +19,49 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        
+        <script type="text/javascript" >
+        $(document).ready(function() {
+            alert ("1");
+        $( "#estado" ).change(function() {
+            alert ("2");
+        getCidades();
+        });
+        });
+        
+        function getCidades(){
+            alert ("3");
+            var estadoId = $("#estado").val();
+            var url = "AJAXServlet";
+            $.ajax({
+            url : url, // URL da sua Servlet
+            data : {
+            estadoId : estadoId
+            }, // Parâmetro passado para a Servlet
+            dataType : 'json',
+            success : function(data) {
+            // Se sucesso, limpa e preenche a combo de cidade
+            // alert(JSON.stringify(data));
+            alert ("4");
+            
+            $("#cidadeAJAX").empty();
+            $.each(data, function(i, obj) {
+                alert ("5");
+            $("#cidadeAJAX").append('<option value=' + obj.id_cidade + '>' + obj.nome_cidade + '</option>');
+            alert ("6");
+            
+            });
+            
+
+            },
+            error : function(request, textStatus, errorThrown) {
+            alert(request.status + ', Error: ' + request.statusText);
+            // Erro
+            }
+            });
+        }
+        </script>
+
     </head>
     <body>
         <jsp:useBean id="login" class="com.ufpr.tads.web2.beans.LoginBean" scope="session"/>
@@ -87,6 +130,21 @@
                 CEP: <input type="text" name="cep" ><br/>
 
 
+              
+       
+                
+             
+                
+                
+                Estado:
+                <select name="uf" onChange="getCidades();">
+                    <option value="">Selecione</option>
+                        <c:forEach items="${listaestados}" var="estado">  
+                            <option value="${estado.id_estado}">${estado.nome_estado}</option>
+                        </c:forEach>
+                </select>
+                <br/>
+                
                 Cidade:
                 <select name="cidade">
                     <option value="">Selecione</option>
@@ -94,16 +152,16 @@
                             <option value="${cidade.id_cidade}">${cidade.nome_cidade}</option>
                         </c:forEach>
                 </select>
-
                 <br/>
-
-                Estado:
-                <select name="uf" >
+                
+                
+                Cidade AJAX:
+                <select name="cidadeAJAX">
                     <option value="">Selecione</option>
-                        <c:forEach items="${listaestados}" var="estado">  
-                            <option value="${estado.id_estado}">${estado.nome_estado}</option>
-                        </c:forEach>
                 </select>
+                <br/>
+                
+                
 
                 <br/><br/>
 
@@ -111,6 +169,6 @@
             </form>
         </c:if>
         
-            
+        </br></br> <a href="#void" onclick="getCidades();" style="color: darkblue">Carregar Cidade</a>
     </body>
 </html>
