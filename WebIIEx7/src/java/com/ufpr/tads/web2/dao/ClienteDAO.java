@@ -106,7 +106,7 @@ public class ClienteDAO {
             st.setString(1, cpf);
             st.setString(2, nome);
             st.setString(3, email);
-            st.setDate(4, (java.sql.Date) data);
+            st.setDate(4, new java.sql.Date(data.getTime()));
             st.setString(5, rua);
             st.setInt(6, numero);
             st.setString(7, cep);
@@ -130,7 +130,7 @@ public class ClienteDAO {
         st.setString(1, cpf);
         st.setString(2, nome);
         st.setString(3, email);
-        st.setDate(4, (java.sql.Date) data);
+        st.setDate(4, new java.sql.Date(data.getTime()));
         st.setString(5, rua);
         st.setInt(6, numero);
         st.setString(7, cep);
@@ -139,5 +139,4 @@ public class ClienteDAO {
         
         st.executeUpdate();
     }
-
 }

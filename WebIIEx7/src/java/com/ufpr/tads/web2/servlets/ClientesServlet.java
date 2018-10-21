@@ -111,10 +111,10 @@ public class ClientesServlet extends HttpServlet {
                             
                             cliente.setCepCliente(request.getParameter("cep"));
                             cliente.setRuaCliente(request.getParameter("rua"));
-                            int numero = Integer.parseInt(request.getParameter("nr"));
+                            int numero = Integer.parseInt(request.getParameter("numero"));
                             cliente.setNrCliente(numero);
                             cliente.setCidadeCliente(Integer.parseInt(request.getParameter("cidade")));
-                            cliente.setEstadoCliente(Integer.parseInt(request.getParameter("uf")));
+                            cliente.setEstadoCliente(Integer.parseInt(request.getParameter("estado")));
                             ClientesFacade.alterar(cliente);
                             response.sendRedirect(request.getContextPath() + "/ClientesServlet");
                             break;
@@ -192,9 +192,7 @@ public class ClientesServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ClientesServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(ClientesServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
