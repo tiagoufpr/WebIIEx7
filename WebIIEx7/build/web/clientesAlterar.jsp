@@ -36,7 +36,7 @@
             Id: <input type="text" name="id" value=<jsp:getProperty name="alterar" property="idCliente"/> ><br/>
             CPF: <input type="text" name="cpf" value= <jsp:getProperty name="alterar" property="cpfCliente"/> ><br/>
             Email: <input type="text" name="email" value= <jsp:getProperty name="alterar" property="emailCliente"/>><br/>
-            Data: <input type="text" name="data" value= <jsp:getProperty name="alterar" property="dataCliente"/> ><br/>
+            Data: <input type="date" name="data" value= <jsp:getProperty name="alterar" property="dataCliente"/> ><br/>
             Rua: <input type="text" name="rua" value= <jsp:getProperty name="alterar" property="ruaCliente"/> ><br/>
             Número: <input type="text" name="numero" value= <jsp:getProperty name="alterar" property="nrCliente"/> ><br/>
             CEP: <input type="text" name="cep" value= <jsp:getProperty name="alterar" property="cepCliente"/> ><br/>
