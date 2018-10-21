@@ -67,9 +67,9 @@ public class PortalServlet extends HttpServlet {
              
                 for(int i = 0; i < usuarios.size(); i++){  
                     out.println("<tr>");
-                    out.println("<td>" + usuarios.get(i).getNome_usuario() + "</td>");  
-                    out.println("<td>" + usuarios.get(i).getLogin_usuario() + "</td>"); 
-                    out.println("<td>" + usuarios.get(i).getSenha_usuario() + "</td>"); 
+                    out.println("<td>" + usuarios.get(i).getNomeUsuario() + "</td>");  
+                    out.println("<td>" + usuarios.get(i).getLoginUsuario() + "</td>"); 
+                    out.println("<td>" + usuarios.get(i).getSenhaUsuario() + "</td>"); 
                     out.println("</tr>");
                 }
                 

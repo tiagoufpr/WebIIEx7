@@ -37,7 +37,7 @@
                 // alert(JSON.stringify(data));
                 $("#cidadeAJAX").empty();
                 $.each(data, function(i, obj) {
-                $("#cidadeAJAX").append('<option value=' + obj.id_cidade + '>' + obj.nome_cidade + '</option>');
+                $("#cidadeAJAX").append('<option value=' + obj.idCidade + '>' + obj.nomeCidade + '</option>');
                 });
 
 
@@ -68,21 +68,21 @@
             <h1>Dados do cliente</h1>
 
             <form action="ClientesServlet?action=update" method="POST">
-                Nome: <input type="text" name="nome" value=${alterar.nome_cliente}>  <br/>
-                Id: <input type="text" name="id" value=${alterar.id_cliente}> <br/>
-                CPF: <input type="text" name="cpf" value=${alterar.cpf_cliente}> <br/>
-                Email: <input type="text" name="email" value=${alterar.email_cliente}> <br/>
-                Data: <input type="text" name="data" value=${alterar.data_cliente}> <br/>
-                Rua: <input type="text" name="rua" value=${alterar.rua_cliente}> <br/>
-                Número: <input type="text" name="numero" value=${alterar.nr_cliente}> <br/>
-                CEP: <input type="text" name="cep" value=${alterar.cep_cliente}> <br/>
+                Nome: <input type="text" name="nome" value=${alterar.nomeCliente}>  <br/>
+                Id: <input type="text" name="id" value=${alterar.idCliente}> <br/>
+                CPF: <input type="text" name="cpf" value=${alterar.cpfCliente}> <br/>
+                Email: <input type="text" name="email" value=${alterar.emailCliente}> <br/>
+                Data: <input type="text" name="data" value=${alterar.dataCliente}> <br/>
+                Rua: <input type="text" name="rua" value=${alterar.ruaCliente}> <br/>
+                Número: <input type="text" name="numero" value=${alterar.nrCliente}> <br/>
+                CEP: <input type="text" name="cep" value=${alterar.cepCliente}> <br/>
 
                 
                 Estado:
                 <select name="uf" >
                     <option value="">Selecione</option>
                         <c:forEach items="${listaestados}" var="estado">  
-                            <option value="${estado.id_estado}">${estado.nome_estado}</option>
+                            <option value="${estado.idEstado}">${estado.nomeEstado}</option>
                         </c:forEach>
                 </select>
                 
@@ -92,7 +92,7 @@
                 <select name="cidade">
                     <option value="">Selecione</option>
                         <c:forEach items="${listacidades}" var="cidade">  
-                            <option value="${cidade.id_cidade}">${cidade.nome_cidade}</option>
+                            <option value="${cidade.idCidade}">${cidade.nomeCidade}</option>
                         </c:forEach>
                 </select>
 
@@ -128,7 +128,7 @@
                 <select name="uf" id ="estado" onChange="getCidades();">
                     <option value="">Selecione</option>
                         <c:forEach items="${listaestados}" var="estado">  
-                            <option value="${estado.id_estado}">${estado.nome_estado}</option>
+                            <option value="${estado.idEstado}">${estado.nomeEstado}</option>
                         </c:forEach>
                 </select>
                 <br/>

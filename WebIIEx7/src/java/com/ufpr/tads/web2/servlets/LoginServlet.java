@@ -63,10 +63,10 @@ public class LoginServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             
-            if((usuario != null) && (usuario.getLogin_usuario().equals(loginForm)) && (usuario.getSenha_usuario().equals(passwordForm))) {
+            if((usuario != null) && (usuario.getLoginUsuario().equals(loginForm)) && (usuario.getSenhaUsuario().equals(passwordForm))) {
                 LoginBean loginBean = new LoginBean();
-                loginBean.setId_usuario(usuario.getId_usuario());
-                loginBean.setNome_usuario(usuario.getNome_usuario());
+                loginBean.setIdUsuario(usuario.getIdUsuario());
+                loginBean.setNomeUsuario(usuario.getNomeUsuario());
                 HttpSession session = request.getSession();
                 session.setAttribute("login", loginBean);
 

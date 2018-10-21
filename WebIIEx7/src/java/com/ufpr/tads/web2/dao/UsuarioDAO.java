@@ -53,9 +53,9 @@ public class UsuarioDAO {
             
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, 5);
-            stmt.setString(2, usuario.getLogin_usuario());
-            stmt.setString(3, usuario.getSenha_usuario());
-            stmt.setString(4, usuario.getNome_usuario());
+            stmt.setString(2, usuario.getLoginUsuario());
+            stmt.setString(3, usuario.getSenhaUsuario());
+            stmt.setString(4, usuario.getNomeUsuario());
             stmt.execute();  
 
             conn.close();

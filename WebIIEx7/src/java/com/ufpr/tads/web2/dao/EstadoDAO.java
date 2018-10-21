@@ -39,8 +39,8 @@ public class EstadoDAO {
         
         while (rs.next()) {
             Estado estado = new Estado();
-            estado.setId_estado(rs.getInt("id_estado"));
-            estado.setNome_estado(rs.getString("nome_estado"));
+            estado.setIdEstado(rs.getInt("id_estado"));
+            estado.setNomeEstado(rs.getString("nome_estado"));
            
             resultados.add(estado);
         }
@@ -58,8 +58,8 @@ public class EstadoDAO {
         Estado estado = new Estado();
 
         while (rs.next()) {
-            estado.setId_estado(rs.getInt("id_estado"));
-            estado.setNome_estado(rs.getString("nome_estado"));
+            estado.setIdEstado(rs.getInt("id_estado"));
+            estado.setNomeEstado(rs.getString("nome_estado"));
         }
         return null;
     }

@@ -6,6 +6,7 @@
 package com.ufpr.tads.web2.beans;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
@@ -13,98 +14,98 @@ import java.io.Serializable;
  */
 public class Cliente implements Serializable{
     
-    private int id_cliente;
-    private String cpf_cliente;
-    private String nome_cliente;
-    private String email_cliente;
-    private String data_cliente;
-    private String rua_cliente;
-    private int nr_cliente;
-    private String cep_cliente;
-    private int id_cidade;
-    private int id_estado;
+    private int idCliente;
+    private String cpfCliente;
+    private String nomeCliente;
+    private String emailCliente;
+    private Date dataCliente;
+    private String ruaCliente;
+    private int nrCliente;
+    private String cepCliente;
+    private int idCidade;
+    private int idEstado;
     
     public Cliente(){
     }
 
-    public int getId_cliente() {
-        return id_cliente;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public String getCpf_cliente() {
-        return cpf_cliente;
+    public String getCpfCliente() {
+        return cpfCliente;
     }
 
-    public void setCpf_cliente(String cpf_cliente) {
-        this.cpf_cliente = cpf_cliente;
+    public void setCpfCliente(String cpfCliente) {
+        this.cpfCliente = cpfCliente;
     }
 
-    public String getNome_cliente() {
-        return nome_cliente;
+    public String getNomeCliente() {
+        return nomeCliente;
     }
 
-    public void setNome_cliente(String nome_cliente) {
-        this.nome_cliente = nome_cliente;
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
     }
 
-    public String getEmail_cliente() {
-        return email_cliente;
+    public String getEmailCliente() {
+        return emailCliente;
     }
 
-    public void setEmail_cliente(String email_cliente) {
-        this.email_cliente = email_cliente;
+    public void setEmailCliente(String emailCliente) {
+        this.emailCliente = emailCliente;
     }
 
-    public String getData_cliente() {
-        return data_cliente;
+    public Date getDataCliente() {
+        return dataCliente;
     }
 
-    public void setData_cliente(String data_cliente) {
-        this.data_cliente = data_cliente;
+    public void setDataCliente(Date dataCliente) {
+        this.dataCliente = dataCliente;
     }
 
-    public String getRua_cliente() {
-        return rua_cliente;
+    public String getRuaCliente() {
+        return ruaCliente;
     }
 
-    public void setRua_cliente(String rua_cliente) {
-        this.rua_cliente = rua_cliente;
+    public void setRuaCliente(String ruaCliente) {
+        this.ruaCliente = ruaCliente;
     }
 
-    public int getNr_cliente() {
-        return nr_cliente;
+    public int getNrCliente() {
+        return nrCliente;
     }
 
-    public void setNr_cliente(int nr_cliente) {
-        this.nr_cliente = nr_cliente;
+    public void setNrCliente(int nrCliente) {
+        this.nrCliente = nrCliente;
     }
 
-    public String getCep_cliente() {
-        return cep_cliente;
+    public String getCepCliente() {
+        return cepCliente;
     }
 
-    public void setCep_cliente(String cep_cliente) {
-        this.cep_cliente = cep_cliente;
+    public void setCepCliente(String cepCliente) {
+        this.cepCliente = cepCliente;
     }
 
-    public int getCidade_cliente() {
-        return id_cidade;
+    public int getCidadeCliente() {
+        return idCidade;
     }
 
-    public void setCidade_cliente(int id_cidade) {
-        this.id_cidade = id_cidade;
+    public void setCidadeCliente(int idCidade) {
+        this.idCidade = idCidade;
     }
 
-    public int getEstado_cliente() {
-        return id_estado;
+    public int getEstadoCliente() {
+        return idEstado;
     }
 
-    public void setEstado_cliente(int id_estado) {
-        this.id_estado = id_estado;
+    public void setEstadoCliente(int idEstado) {
+        this.idEstado = idEstado;
     }
     
 }

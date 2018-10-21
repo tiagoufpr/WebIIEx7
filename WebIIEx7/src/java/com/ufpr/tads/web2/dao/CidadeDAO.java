@@ -39,8 +39,8 @@ public class CidadeDAO {
         
         while (rs.next()) {
             Cidade estado = new Cidade();
-            estado.setId_cidade(rs.getInt("id_cidade"));
-            estado.setNome_cidade(rs.getString("nome_cidade"));
+            estado.setIdCidade(rs.getInt("id_cidade"));
+            estado.setNomeCidade(rs.getString("nome_cidade"));
            
             resultados.add(estado);
         }
@@ -58,8 +58,8 @@ public class CidadeDAO {
         Cidade cidade = new Cidade();
 
         while (rs.next()) {
-            cidade.setId_cidade(rs.getInt("id_cidade"));
-            cidade.setNome_cidade(rs.getString("nome_cidade"));
+            cidade.setIdCidade(rs.getInt("id_cidade"));
+            cidade.setNomeCidade(rs.getString("nome_cidade"));
         }
         return null;
     }
@@ -102,5 +102,4 @@ public class CidadeDAO {
               
         st.executeUpdate();
     }
-
 }

@@ -49,15 +49,15 @@
                 out.println("</tr>");
 
                 out.println("<tr>");
-                out.println("<td>" + clientes.getNome_cliente() + "</td>");  
-                out.println("<td>" + clientes.getCpf_cliente() + "</td>"); 
-                out.println("<td>" + clientes.getEmail_cliente() + "</td>");
-                out.println("<td>" + clientes.getData_cliente() + "</td>");
-                out.println("<td>" + clientes.getRua_cliente() + "</td>");
-                out.println("<td>" + clientes.getNr_cliente() + "</td>");
-                out.println("<td>" + clientes.getCep_cliente() + "</td>");
-                out.println("<td>" + clientes.getCidade_cliente() + "</td>");
-                out.println("<td>" + clientes.getUf_cliente() + "</td>");
+                out.println("<td>" + clientes.getNomeCliente() + "</td>");  
+                out.println("<td>" + clientes.getCpfCliente() + "</td>"); 
+                out.println("<td>" + clientes.getEmailCliente() + "</td>");
+                out.println("<td>" + clientes.getDataCliente() + "</td>");
+                out.println("<td>" + clientes.getRuaCliente() + "</td>");
+                out.println("<td>" + clientes.getNrCliente() + "</td>");
+                out.println("<td>" + clientes.getCepCliente() + "</td>");
+                out.println("<td>" + clientes.getCidadeCliente() + "</td>");
+                out.println("<td>" + clientes.getEstadoCliente() + "</td>");
 
                 out.println("</tr>");
 

@@ -16,12 +16,12 @@ import java.util.List;
 public class CidadesFacade {
     public static void inserir(Cidade cidade) throws SQLException, ClassNotFoundException {
         CidadeDAO dao = new CidadeDAO();
-        dao.insertCidade(cidade.getNome_cidade());
+        dao.insertCidade(cidade.getNomeCidade());
     }
 
     public static void alterar(Cidade cidade) throws SQLException, ClassNotFoundException {
         CidadeDAO dao = new CidadeDAO();
-        dao.alterarCidade(cidade.getNome_cidade(), cidade.getId_cidade());
+        dao.alterarCidade(cidade.getNomeCidade(), cidade.getIdCidade());
     }
 
     public static Cidade buscar(int id) throws SQLException, ClassNotFoundException {

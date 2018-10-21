@@ -10,30 +10,30 @@ package com.ufpr.tads.web2.beans;
  * @author Tiago
  */
 public class Estado {
-    private int id_estado;
-    private String nome_estado;
+    private int idEstado;
+    private String nomeEstado;
 
     public Estado() {
     }
 
-    public Estado(int id_estado, String nome_estado) {
-        this.id_estado = id_estado;
-        this.nome_estado = nome_estado;
+    public Estado(int idEstado, String nomeEstado) {
+        this.idEstado = idEstado;
+        this.nomeEstado = nomeEstado;
     }
 
-    public int getId_estado() {
-        return id_estado;
+    public int getIdEstado() {
+        return idEstado;
     }
 
-    public void setId_estado(int id_estado) {
-        this.id_estado = id_estado;
+    public void setIdEstado(int idEstado) {
+        this.idEstado = idEstado;
     }
 
-    public String getNome_estado() {
-        return nome_estado;
+    public String getNomeEstado() {
+        return nomeEstado;
     }
 
-    public void setNome_estado(String nome_estado) {
-        this.nome_estado = nome_estado;
+    public void setNomeEstado(String nomeEstado) {
+        this.nomeEstado = nomeEstado;
     }
 }

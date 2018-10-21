@@ -16,22 +16,22 @@ public class LoginBean implements Serializable{
     public LoginBean() {
     }
     
-    private int id_usuario;
-    private String nome_usuario;
+    private int idUsuario;
+    private String nomeUsuario;
 
-    public int getId_usuario() {
-        return id_usuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public String getNome_usuario() {
-        return nome_usuario;
+    public String getNomeUsuario() {
+        return nomeUsuario;
     }
 
-    public void setNome_usuario(String nome_usuario) {
-        this.nome_usuario = nome_usuario;
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
     }
 }

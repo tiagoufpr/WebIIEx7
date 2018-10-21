@@ -10,50 +10,50 @@ package com.ufpr.tads.web2.beans;
  * @author Itay
  */
 public class Usuario {
-    private int id_usuario;
-    private String login_usuario;
-    private String senha_usuario;
-    private String nome_usuario;
+    private int idUsuario;
+    private String loginUsuario;
+    private String senhaUsuario;
+    private String nomeUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(int id_usuario, String login_usuario, String senha_usuario, String nome_usuario) {
-        this.id_usuario = id_usuario;
-        this.login_usuario = login_usuario;
-        this.senha_usuario = senha_usuario;
-        this.nome_usuario = nome_usuario;
+    public Usuario(int idUsuario, String loginUsuario, String senhaUsuario, String nomeUsuario) {
+        this.idUsuario = idUsuario;
+        this.loginUsuario = loginUsuario;
+        this.senhaUsuario = senhaUsuario;
+        this.nomeUsuario = nomeUsuario;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public String getLogin_usuario() {
-        return login_usuario;
+    public String getLoginUsuario() {
+        return loginUsuario;
     }
 
-    public void setLogin_usuario(String login_usuario) {
-        this.login_usuario = login_usuario;
+    public void setLoginUsuario(String loginUsuario) {
+        this.loginUsuario = loginUsuario;
     }
 
-    public String getSenha_usuario() {
-        return senha_usuario;
+    public String getSenhaUsuario() {
+        return senhaUsuario;
     }
 
-    public void setSenha_usuario(String senha_usuario) {
-        this.senha_usuario = senha_usuario;
+    public void setSenhaUsuario(String senhaUsuario) {
+        this.senhaUsuario = senhaUsuario;
     }
 
-    public String getNome_usuario() {
-        return nome_usuario;
+    public String getNomeUsuario() {
+        return nomeUsuario;
     }
 
-    public void setNome_usuario(String nome_usuario) {
-        this.nome_usuario = nome_usuario;
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
     }
 }

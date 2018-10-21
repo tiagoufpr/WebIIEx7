@@ -43,7 +43,7 @@
             <select name="cidade">
                 <option value="">Selecione</option>
                     <c:forEach items="${listacidades}" var="cidade">  
-                        <option value="${cidade.id_cidade}">${cidade.nome_cidade}</option>
+                        <option value="${cidade.idCidade}">${cidade.nomeCidade}</option>
                     </c:forEach>
             </select>
       
@@ -53,7 +53,7 @@
             <select name="uf" >
                 <option value="">Selecione</option>
                     <c:forEach items="${listaestados}" var="estado">  
-                        <option value="${estado.id_estado}">${estado.nome_estado}</option>
+                        <option value="${estado.idEstado}">${estado.nomeEstado}</option>
                     </c:forEach>
             </select>
                

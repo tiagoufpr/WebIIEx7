@@ -1,6 +1,12 @@
+DROP DATABASE WEB2;
+
+
 CREATE DATABASE WEB2;
 
+
 USE WEB2;
+
+
 
 create table tb_usuario (
 id_usuario serial primary key,
@@ -33,6 +39,9 @@ insert into tb_cidade (id_cidade, nome_cidade) values (2, 'São Paulo');
 
 
 DROP table tb_cliente;
+
+
+SELECT * FROM tb_cliente;
 
 create table tb_cliente (
 id_cliente serial primary key,

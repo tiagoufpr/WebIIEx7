@@ -11,6 +11,9 @@ import com.ufpr.tads.web2.dao.ClienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -52,21 +55,31 @@ public class AlterarClienteServlet extends HttpServlet {
                 String cpf = (String) request.getParameter("cpf");
                 String nome = (String) request.getParameter("nome");
                 String email = (String) request.getParameter("email");
-                String data = (String) request.getParameter("data");
-                String rua = (String) request.getParameter("rua");
-                String num = (String) request.getParameter("numero");
-                int numero = Integer.parseInt(num);
-                String cep = (String) request.getParameter("cep");
-                int cidade = Integer.parseInt((String) request.getParameter("cidade"));
-                int uf = Integer.parseInt((String) request.getParameter("uf"));
-                String idString = (String) request.getParameter("id");
-                int id = Integer.parseInt(idString);
-                        
-                ClienteDAO dao = new ClienteDAO();
-                dao.alterarCliente(cpf, nome, email, data, rua, numero, cep, cidade, uf, id);
                 
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/ClientesServlet");
-                rd.forward(request, response);
+                
+                try {
+                    SimpleDateFormat simnpleDataFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    Date data = simnpleDataFormat.parse(request.getParameter("data"));
+                    
+                    String rua = (String) request.getParameter("rua");
+                    String num = (String) request.getParameter("numero");
+                    int numero = Integer.parseInt(num);
+                    String cep = (String) request.getParameter("cep");
+                    int cidade = Integer.parseInt((String) request.getParameter("cidade"));
+                    int uf = Integer.parseInt((String) request.getParameter("uf"));
+                    String idString = (String) request.getParameter("id");
+                    int id = Integer.parseInt(idString);
+
+                    ClienteDAO dao = new ClienteDAO();
+                    dao.alterarCliente(cpf, nome, email, data, rua, numero, cep, cidade, uf, id);
+
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/ClientesServlet");
+                    rd.forward(request, response);
+                    
+                      
+                }catch (ParseException e) {
+                    System.out.println("Erro Parse: " + e);
+                }  
             }
         }
     }

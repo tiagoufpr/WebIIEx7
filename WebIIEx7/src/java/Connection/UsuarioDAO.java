@@ -36,10 +36,10 @@ public class UsuarioDAO {
         Usuario usuario = new Usuario();
 
         while (rs.next()) {
-            usuario.setId_usuario(rs.getInt(1));
-            usuario.setLogin_usuario(rs.getString(2));
-            usuario.setSenha_usuario(rs.getString(3));
-            usuario.setNome_usuario(rs.getString(4));
+            usuario.setIdUsuario(rs.getInt(1));
+            usuario.setLoginUsuario(rs.getString(2));
+            usuario.setSenhaUsuario(rs.getString(3));
+            usuario.setNomeUsuario(rs.getString(4));
             return usuario;
         }
         return null;
@@ -56,10 +56,10 @@ public class UsuarioDAO {
         
         while (rs.next()) {
             Usuario usuario = new Usuario();
-            usuario.setId_usuario(rs.getInt("id_usuario"));
-            usuario.setLogin_usuario(rs.getString("login_usuario"));
-            usuario.setSenha_usuario(rs.getString("senha_usuario"));
-            usuario.setNome_usuario(rs.getString("nome_usuario"));
+            usuario.setIdUsuario(rs.getInt("id_usuario"));
+            usuario.setLoginUsuario(rs.getString("login_usuario"));
+            usuario.setSenhaUsuario(rs.getString("senha_usuario"));
+            usuario.setNomeUsuario(rs.getString("nome_usuario"));
             resultados.add(usuario);
         }
         return resultados;
@@ -70,9 +70,9 @@ public class UsuarioDAO {
         String sql = "INSERT INTO tb_usuario (nome_usuario, login_usuario, senha_usuario) VALUES ((?), (?), (?))";
         PreparedStatement st = con.prepareStatement(sql);
         
-        st.setString(1, usuario.getNome_usuario());
-        st.setString(2, usuario.getLogin_usuario());
-        st.setString(3, usuario.getSenha_usuario());
+        st.setString(1, usuario.getNomeUsuario());
+        st.setString(2, usuario.getLoginUsuario());
+        st.setString(3, usuario.getSenhaUsuario());
         st.executeUpdate();
     }
 }

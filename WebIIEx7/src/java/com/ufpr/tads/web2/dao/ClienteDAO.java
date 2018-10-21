@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,16 +40,16 @@ public class ClienteDAO {
         
         while (rs.next()) {
             Cliente cliente = new Cliente();
-            cliente.setId_cliente(rs.getInt("id_cliente"));
-            cliente.setCpf_cliente(rs.getString("cpf_cliente"));
-            cliente.setNome_cliente(rs.getString("nome_cliente"));
-            cliente.setEmail_cliente(rs.getString("email_cliente"));
-            cliente.setData_cliente(rs.getString("data_cliente"));
-            cliente.setRua_cliente(rs.getString("rua_cliente"));
-            cliente.setNr_cliente(rs.getInt("nr_cliente"));
-            cliente.setCep_cliente(rs.getString("cep_cliente"));
-            cliente.setCidade_cliente(rs.getInt("id_cidade"));
-            cliente.setEstado_cliente(rs.getInt("id_estado"));
+            cliente.setIdCliente(rs.getInt("id_cliente"));
+            cliente.setCpfCliente(rs.getString("cpf_cliente"));
+            cliente.setNomeCliente(rs.getString("nome_cliente"));
+            cliente.setEmailCliente(rs.getString("email_cliente"));
+            cliente.setDataCliente(rs.getDate("data_cliente"));
+            cliente.setRuaCliente(rs.getString("rua_cliente"));
+            cliente.setNrCliente(rs.getInt("nr_cliente"));
+            cliente.setCepCliente(rs.getString("cep_cliente"));
+            cliente.setCidadeCliente(rs.getInt("id_cidade"));
+            cliente.setEstadoCliente(rs.getInt("id_estado"));
             
             resultados.add(cliente);
         }
@@ -66,16 +67,16 @@ public class ClienteDAO {
         Cliente cliente = new Cliente();
 
         while (rs.next()) {
-            cliente.setId_cliente(rs.getInt("id_cliente"));
-            cliente.setCpf_cliente(rs.getString("cpf_cliente"));
-            cliente.setNome_cliente(rs.getString("nome_cliente"));
-            cliente.setEmail_cliente(rs.getString("email_cliente"));
-            cliente.setData_cliente(rs.getString("data_cliente"));
-            cliente.setRua_cliente(rs.getString("rua_cliente"));
-            cliente.setNr_cliente(rs.getInt("nr_cliente"));
-            cliente.setCep_cliente(rs.getString("cep_cliente"));
-            cliente.setCidade_cliente(rs.getInt("id_cidade"));
-            cliente.setEstado_cliente(rs.getInt("id_estado"));
+            cliente.setIdCliente(rs.getInt("id_cliente"));
+            cliente.setCpfCliente(rs.getString("cpf_cliente"));
+            cliente.setNomeCliente(rs.getString("nome_cliente"));
+            cliente.setEmailCliente(rs.getString("email_cliente"));
+            cliente.setDataCliente(rs.getDate("data_cliente"));
+            cliente.setRuaCliente(rs.getString("rua_cliente"));
+            cliente.setNrCliente(rs.getInt("nr_cliente"));
+            cliente.setCepCliente(rs.getString("cep_cliente"));
+            cliente.setCidadeCliente(rs.getInt("id_cidade"));
+            cliente.setEstadoCliente(rs.getInt("id_estado"));
             return cliente;
         }
         return null;
@@ -93,7 +94,7 @@ public class ClienteDAO {
         }
     }
 
-    public void alterarCliente(String cpf, String nome, String email, String data, String rua, int numero, String cep, int cidade, int uf, int id) throws SQLException {
+    public void alterarCliente(String cpf, String nome, String email, java.util.Date data, String rua, int numero, String cep, int cidade, int uf, int id) throws SQLException {
         try{
             String sql = "UPDATE tb_cliente SET cpf_cliente = ? , nome_cliente = ?, " +
                         "email_cliente = ?, data_cliente = ?, rua_cliente = ?, nr_cliente = ?, " + 
@@ -105,7 +106,7 @@ public class ClienteDAO {
             st.setString(1, cpf);
             st.setString(2, nome);
             st.setString(3, email);
-            st.setString(4, data);
+            st.setDate(4, (java.sql.Date) data);
             st.setString(5, rua);
             st.setInt(6, numero);
             st.setString(7, cep);
@@ -119,7 +120,7 @@ public class ClienteDAO {
         }
     }
     
-    public void insertCliente(String cpf, String nome, String email, String data, String rua, int numero, String cep, int cidade, int uf) throws SQLException {
+    public void insertCliente(String cpf, String nome, String email, java.util.Date data, String rua, int numero, String cep, int cidade, int uf) throws SQLException {
         
         String sql = "INSERT INTO tb_cliente (cpf_cliente, nome_cliente, email_cliente, data_cliente, rua_cliente," +
                     " nr_cliente, cep_cliente, id_cidade, id_estado)" + 
@@ -129,7 +130,7 @@ public class ClienteDAO {
         st.setString(1, cpf);
         st.setString(2, nome);
         st.setString(3, email);
-        st.setString(4, data);
+        st.setDate(4, (java.sql.Date) data);
         st.setString(5, rua);
         st.setInt(6, numero);
         st.setString(7, cep);

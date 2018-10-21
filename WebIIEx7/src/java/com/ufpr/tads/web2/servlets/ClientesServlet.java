@@ -15,12 +15,12 @@ import com.ufpr.tads.web2.facade.ClientesFacade;
 import com.ufpr.tads.web2.facade.EstadosFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -95,19 +95,26 @@ public class ClientesServlet extends HttpServlet {
                         case "update":
                             cliente = new Cliente();
                             id = Integer.parseInt(request.getParameter("id"));
-                            cliente.setId_cliente(id);
-                            cliente.setCpf_cliente(request.getParameter("cpf"));
-                            cliente.setNome_cliente(request.getParameter("nome"));
-                            cliente.setEmail_cliente(request.getParameter("email"));
+                            cliente.setIdCliente(id);
+                            cliente.setCpfCliente(request.getParameter("cpf"));
+                            cliente.setNomeCliente(request.getParameter("nome"));
+                            cliente.setEmailCliente(request.getParameter("email"));
                             String dataString = request.getParameter("data");
 
-                            cliente.setData_cliente(dataString);
-                            cliente.setCep_cliente(request.getParameter("cep"));
-                            cliente.setRua_cliente(request.getParameter("rua"));
+                            try {
+                                SimpleDateFormat simnpleDataFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                Date data = simnpleDataFormat.parse(dataString);
+                                cliente.setDataCliente(data);
+                            }catch (ParseException e) {
+                                System.out.println("Erro Parse: " + e);
+                            }
+                            
+                            cliente.setCepCliente(request.getParameter("cep"));
+                            cliente.setRuaCliente(request.getParameter("rua"));
                             int numero = Integer.parseInt(request.getParameter("nr"));
-                            cliente.setNr_cliente(numero);
-                            cliente.setCidade_cliente(Integer.parseInt(request.getParameter("cidade")));
-                            cliente.setEstado_cliente(Integer.parseInt(request.getParameter("uf")));
+                            cliente.setNrCliente(numero);
+                            cliente.setCidadeCliente(Integer.parseInt(request.getParameter("cidade")));
+                            cliente.setEstadoCliente(Integer.parseInt(request.getParameter("uf")));
                             ClientesFacade.alterar(cliente);
                             response.sendRedirect(request.getContextPath() + "/ClientesServlet");
                             break;
@@ -122,18 +129,25 @@ public class ClientesServlet extends HttpServlet {
                             break;
                         case "new":
                             cliente = new Cliente();
-                            cliente.setNome_cliente(request.getParameter("nome"));
-                            cliente.setCpf_cliente(request.getParameter("cpf"));
-                            cliente.setEmail_cliente(request.getParameter("email"));
+                            cliente.setNomeCliente(request.getParameter("nome"));
+                            cliente.setCpfCliente(request.getParameter("cpf"));
+                            cliente.setEmailCliente(request.getParameter("email"));
                             String dataS = request.getParameter("data");
 
-                            cliente.setData_cliente(dataS);
-                            cliente.setCep_cliente(request.getParameter("cep"));
-                            cliente.setRua_cliente(request.getParameter("rua"));
+                            try {
+                                SimpleDateFormat simnpleDataFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                Date data = simnpleDataFormat.parse(dataS);
+                                cliente.setDataCliente(data);
+                            }catch (ParseException e) {
+                                System.out.println("Erro Parse: " + e);
+                            }
+                            
+                            cliente.setCepCliente(request.getParameter("cep"));
+                            cliente.setRuaCliente(request.getParameter("rua"));
                             int nr = Integer.parseInt(request.getParameter("numero"));
-                            cliente.setNr_cliente(nr);
-                            cliente.setCidade_cliente(Integer.parseInt(request.getParameter("cidade")));
-                            cliente.setEstado_cliente(Integer.parseInt(request.getParameter("uf")));
+                            cliente.setNrCliente(nr);
+                            cliente.setCidadeCliente(Integer.parseInt(request.getParameter("cidade")));
+                            cliente.setEstadoCliente(Integer.parseInt(request.getParameter("uf")));
                             ClientesFacade.inserir(cliente);
                             response.sendRedirect(request.getContextPath() + "/ClientesServlet");
                             break;

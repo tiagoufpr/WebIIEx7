@@ -16,12 +16,12 @@ import java.util.List;
 public class EstadosFacade {
     public static void inserir(Estado estado) throws SQLException, ClassNotFoundException {
         EstadoDAO dao = new EstadoDAO();
-        dao.insertEstado(estado.getNome_estado());
+        dao.insertEstado(estado.getNomeEstado());
     }
 
     public static void alterar(Estado estado) throws SQLException, ClassNotFoundException {
         EstadoDAO dao = new EstadoDAO();
-        dao.alterarEstado(estado.getNome_estado(), estado.getId_estado());
+        dao.alterarEstado(estado.getNomeEstado(), estado.getIdEstado());
     }
 
     public static Estado buscar(int id) throws SQLException, ClassNotFoundException {

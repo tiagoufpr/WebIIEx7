@@ -60,7 +60,7 @@
 
         <div class="w3-right" style="padding-right: 250px;">
             <p>
-                <c:out value="${login.nome_usuario}"/>
+                <c:out value="${login.nomeUsuario}"/>
             </p>
             <br/>
             
@@ -75,12 +75,12 @@
                 <c:forEach items="${listar}" var="cliente">  
                     
                     <tr>
-                    <td> ${cliente.nome_cliente} </td> 
-                    <td> ${cliente.cpf_cliente} </td> 
-                    <td> ${cliente.email_cliente} </td>
-                    <td> <a href="ClientesServlet?action=show&id=${cliente.id_cliente}"><img src="Imagens/view.jpg" height="25" width="25px"></a></td>
-                    <td> <a href="ClientesServlet?action=formUpdate&id=${cliente.id_cliente}"><img src="Imagens/update.png" height="25" width="25px"></a></td>
-                    <td> <a href="#void" onclick="jsRemover(${cliente.id_cliente});"><img src="Imagens/remove.png" height="25" width="25px"></a></td>
+                    <td> ${cliente.nomeCliente} </td> 
+                    <td> ${cliente.cpfCliente} </td> 
+                    <td> ${cliente.emailCliente} </td>
+                    <td> <a href="ClientesServlet?action=show&id=${cliente.idCliente}"><img src="Imagens/view.jpg" height="25" width="25px"></a></td>
+                    <td> <a href="ClientesServlet?action=formUpdate&id=${cliente.idCliente}"><img src="Imagens/update.png" height="25" width="25px"></a></td>
+                    <td> <a href="#void" onclick="jsRemover(${cliente.idCliente});"><img src="Imagens/remove.png" height="25" width="25px"></a></td>
                     </tr>
                 </c:forEach>
             </table>
