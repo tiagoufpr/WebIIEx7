@@ -43,7 +43,7 @@
             
             Cidade:
             <select name="cidade" <jsp:getProperty name="alterar" property="cidadeCliente"/>>
-                <option value="">Selecione</option>
+                <option value="0">Selecione</option>
                     <c:forEach items="${listacidades}" var="cidade">  
                         <option value="${cidade.idCidade}">${cidade.nomeCidade}</option>
                     </c:forEach>
@@ -53,7 +53,7 @@
   
             Estado:
             <select name="estado" <jsp:getProperty name="alterar" property="estadoCliente"/>>
-                <option value="">Selecione</option>
+                <option value="0">Selecione</option>
                     <c:forEach items="${listaestados}" var="estado">  
                         <option value="${estado.idEstado}">${estado.nomeEstado}</option>
                     </c:forEach>

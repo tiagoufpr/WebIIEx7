@@ -102,7 +102,7 @@ public class ClientesServlet extends HttpServlet {
                             String dataString = request.getParameter("data");
 
                             try {
-                                SimpleDateFormat simnpleDataFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                SimpleDateFormat simnpleDataFormat = new SimpleDateFormat("yyyy-MM-dd");
                                 Date data = simnpleDataFormat.parse(dataString);
                                 cliente.setDataCliente(data);
                             }catch (ParseException e) {
@@ -135,7 +135,7 @@ public class ClientesServlet extends HttpServlet {
                             String dataS = request.getParameter("data");
 
                             try {
-                                SimpleDateFormat simnpleDataFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                SimpleDateFormat simnpleDataFormat = new SimpleDateFormat("yyyy-MM-dd");
                                 Date data = simnpleDataFormat.parse(dataS);
                                 cliente.setDataCliente(data);
                             }catch (ParseException e) {

@@ -33,7 +33,7 @@
             Nome: <input type="text" name="nome" > <br/>
             CPF: <input type="text" name="cpf" ><br/>
             Email: <input type="text" name="email" ><br/>
-            Data: <input type="text" name="data" ><br/>
+            Data: <input type="date" name="data" ><br/>
             Rua: <input type="text" name="rua" ><br/>
             Número: <input type="text" name="numero" ><br/>
             CEP: <input type="text" name="cep" ><br/>
