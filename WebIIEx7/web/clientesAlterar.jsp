@@ -30,7 +30,7 @@
         
         <h1>Dados do cliente</h1>
         
-        <jsp:useBean id="alterar" class="com.ufpr.tads.web2.beans.Cliente" scope="application">
+        <jsp:useBean id="alterar" class="com.ufpr.tads.web2.beans.Cliente" scope="application"/>
         <form action="ClientesServlet?action=update" method="POST">
             Nome: <input type="text" name="nome" value=<jsp:getProperty name="alterar" property="nomeCliente"/> > <br/>
             Id: <input type="text" name="id" value=<jsp:getProperty name="alterar" property="idCliente"/> ><br/>
@@ -64,7 +64,7 @@
             <input type="submit" value="Alterar"> <input type="submit" value="Cancelar" formaction="ClientesServlet">
         </form>
         
-        </jsp:useBean>
+
             
     </body>
 </html>

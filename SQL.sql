@@ -27,15 +27,27 @@ nome_estado varchar(100)
 
 insert into tb_estado (id_estado, nome_estado) values (1, 'PR');
 insert into tb_estado (id_estado, nome_estado) values (2, 'SP');
+insert into tb_estado (id_estado, nome_estado) values (3, 'MG');
 
+DROP TABLE tb_cidade;
 
 create table tb_cidade (
-id_cidade serial primary key,
-nome_cidade varchar(100)
+	id_cidade serial primary key,
+	nome_cidade varchar(100),
+	id_estado integer
 );
 
-insert into tb_cidade (id_cidade, nome_cidade) values (1, 'Curitiba');
-insert into tb_cidade (id_cidade, nome_cidade) values (2, 'São Paulo');
+select * from tb_cidade;
+
+insert into tb_cidade (id_cidade, nome_cidade, id_estado) values (1, 'Curitiba', 1);
+insert into tb_cidade (id_cidade, nome_cidade, id_estado) values (2, 'Londrina', 1);
+insert into tb_cidade (id_cidade, nome_cidade, id_estado) values (3, 'Maringá', 1);
+insert into tb_cidade (id_cidade, nome_cidade, id_estado) values (4, 'São Paulo', 2);
+insert into tb_cidade (id_cidade, nome_cidade, id_estado) values (5, 'São Carlos', 2);
+insert into tb_cidade (id_cidade, nome_cidade, id_estado) values (6, 'Barretos', 2);
+insert into tb_cidade (id_cidade, nome_cidade, id_estado) values (7, 'Ouro Preto', 3);
+insert into tb_cidade (id_cidade, nome_cidade, id_estado) values (8, 'Belo Horizonte', 3);
+insert into tb_cidade (id_cidade, nome_cidade, id_estado) values (9, 'Uberlândia', 3);
 
 
 DROP table tb_cliente;

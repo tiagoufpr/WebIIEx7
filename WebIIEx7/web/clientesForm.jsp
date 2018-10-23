@@ -72,7 +72,7 @@
                 Id: <input type="text" name="id" value=${alterar.idCliente}> <br/>
                 CPF: <input type="text" name="cpf" value=${alterar.cpfCliente}> <br/>
                 Email: <input type="text" name="email" value=${alterar.emailCliente}> <br/>
-                Data: <input type="text" name="data" value=${alterar.dataCliente}> <br/>
+                Data: <input type="date" name="data" value=${alterar.dataCliente}> <br/>
                 Rua: <input type="text" name="rua" value=${alterar.ruaCliente}> <br/>
                 Número: <input type="text" name="numero" value=${alterar.nrCliente}> <br/>
                 CEP: <input type="text" name="cep" value=${alterar.cepCliente}> <br/>
