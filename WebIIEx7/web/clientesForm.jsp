@@ -23,13 +23,12 @@
         <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
         <script type="text/javascript" >
 
-        function getCidades(){
-            var estadoId = $("#estado").val();
+        function getCidades(idEstado){
             var url = "AJAXServlet";
             $.ajax({
                 url : url, // URL da sua Servlet
                 data : {
-                estadoId : estadoId
+                estadoId : idEstado
                 }, // Parâmetro passado para a Servlet
                 dataType : 'json',
                 success : function(data) {
@@ -64,22 +63,22 @@
         
         
       
-        <c:if test="${alterar != null}">
-            <h1>Dados do cliente</h1>
+        <c:if test="${alterar2 != null}">
+            <h1>Alterar Dados do cliente</h1>
 
             <form action="ClientesServlet?action=update" method="POST">
-                Nome: <input type="text" name="nome" value=${alterar.nomeCliente}>  <br/>
-                Id: <input type="text" name="id" value=${alterar.idCliente}> <br/>
-                CPF: <input type="text" name="cpf" value=${alterar.cpfCliente}> <br/>
-                Email: <input type="text" name="email" value=${alterar.emailCliente}> <br/>
-                Data: <input type="date" name="data" value=${alterar.dataCliente}> <br/>
-                Rua: <input type="text" name="rua" value=${alterar.ruaCliente}> <br/>
-                Número: <input type="text" name="numero" value=${alterar.nrCliente}> <br/>
-                CEP: <input type="text" name="cep" value=${alterar.cepCliente}> <br/>
+                Nome: <input type="text" name="nome" value=${alterar2.nomeCliente}>  <br/>
+                Id: <input type="text" name="id" value=${alterar2.idCliente}> <br/>
+                CPF: <input type="text" name="cpf" value=${alterar2.cpfCliente}> <br/>
+                Email: <input type="text" name="email" value=${alterar2.emailCliente}> <br/>
+                Data: <input type="date" name="data" value=${alterar2.dataCliente}> <br/>
+                Rua: <input type="text" name="rua" value=${alterar2.ruaCliente}> <br/>
+                Número: <input type="text" name="numero" value=${alterar2.nrCliente}> <br/>
+                CEP: <input type="text" name="cep" value=${alterar2.cepCliente}> <br/>
 
                 
                 Estado:
-                <select name="uf" >
+                <select name="uf" id ="estado2" onChange="getCidades(estado2.value)>
                     <option value="">Selecione</option>
                         <c:forEach items="${listaestados}" var="estado">  
                             <option value="${estado.idEstado}">${estado.nomeEstado}</option>
@@ -90,10 +89,7 @@
                 
                 Cidade:
                 <select name="cidade">
-                    <option value="">Selecione</option>
-                        <c:forEach items="${listacidades}" var="cidade">  
-                            <option value="${cidade.idCidade}">${cidade.nomeCidade}</option>
-                        </c:forEach>
+                    <option value="">Selecione</option>           
                 </select>
 
                 
@@ -104,7 +100,7 @@
         </c:if>
             
             
-        <c:if test="${alterar == null}">
+        <c:if test="${alterar2 == null}">
 
             <h1>Novo do cliente</h1>
 
@@ -117,15 +113,9 @@
                 Número: <input type="text" name="numero" ><br/>
                 CEP: <input type="text" name="cep" ><br/>
 
-
-              
-       
-                
-             
-                
                 
                 Estado:
-                <select name="uf" id ="estado" onChange="getCidades();">
+                <select name="uf" id ="estado" onChange="getCidades(estado.value)">
                     <option value="">Selecione</option>
                         <c:forEach items="${listaestados}" var="estado">  
                             <option value="${estado.idEstado}">${estado.nomeEstado}</option>

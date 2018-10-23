@@ -33,6 +33,11 @@ public class CidadesFacade {
         CidadeDAO dao = new CidadeDAO();
         return dao.selectCidades();
     }
+    
+    public static List<Cidade> buscarPorEstado(int idEstado) throws SQLException, ClassNotFoundException {
+        CidadeDAO dao = new CidadeDAO();
+        return dao.selectCidadesPorEstado(idEstado);
+    }
 
     public static void excluir(int id) throws SQLException, ClassNotFoundException {
         CidadeDAO dao = new CidadeDAO();

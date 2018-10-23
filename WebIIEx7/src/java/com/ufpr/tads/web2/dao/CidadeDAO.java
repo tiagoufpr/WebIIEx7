@@ -47,6 +47,27 @@ public class CidadeDAO {
         
         return resultados;
     }
+    
+    public List<Cidade> selectCidadesPorEstado(int idEstado) throws SQLException {
+        
+        List<Cidade> resultados = new ArrayList<>();
+        
+        String sql = "SELECT * FROM tb_cidade WHERE id_estado = ?";
+        PreparedStatement st = con.prepareStatement(sql);
+        
+        st.setInt(1, idEstado);
+        ResultSet rs = st.executeQuery();
+        
+        while (rs.next()) {
+            Cidade estado = new Cidade();
+            estado.setIdCidade(rs.getInt("id_cidade"));
+            estado.setNomeCidade(rs.getString("nome_cidade"));
+           
+            resultados.add(estado);
+        }
+        
+        return resultados;
+    }
 
     public Cidade selectCidadeEspecifica(int id) throws SQLException {
 

@@ -43,9 +43,9 @@ public class AJAXServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
-        String estado = request.getParameter("estadoId");
+        int idEstado = Integer.parseInt(request.getParameter("estadoId"));
         // Vai no BD buscar todas as cidades deste estado, em uma lista
-        List<Cidade> cidades = CidadesFacade.buscarTodos();
+        List<Cidade> cidades = CidadesFacade.buscarPorEstado(idEstado);
         
         
         /*

@@ -154,7 +154,7 @@ public class ClientesServlet extends HttpServlet {
                         case "formCliente":
                             id = Integer.parseInt(request.getParameter("id"));
                             cliente = ClientesFacade.buscar(id);
-                            request.setAttribute("alterar", cliente);
+                            request.setAttribute("alterar2", cliente);
                             List<Cidade> cidades3 = CidadesFacade.buscarTodos();
                             request.setAttribute("listacidades", cidades3);
                             List<Estado> estados3 = EstadosFacade.buscarTodos();
