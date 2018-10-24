@@ -74,31 +74,41 @@ insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, 
 'Tiago', '2456856', 'tiago@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
 
 insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
-'Itay', '2456856', 'itay@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+'Itay', '2456856', 'itay@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 2, 1);
 
 insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
-'Herik', '2456856', 'herik@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+'Herik', '2456856', 'herik@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 3, 1);
 
 insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
-'Razer', '2456856', 'razer@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+'Razer', '2456856', 'razer@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 4, 2);
 
 insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
-'Rafaela', '2456856', 'rafaela@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+'Rafaela', '2456856', 'rafaela@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 5, 2);
 
 insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
-'Neves', '2456856', 'neves@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+'Neves', '2456856', 'neves@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 6, 2);
 
 insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
-'Sandramara', '2456856', 'sandramara@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+'Sandramara', '2456856', 'sandramara@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 7, 3);
 
 insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
-'Jerozina', '2456856', 'jeroniza@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+'Jerozina', '2456856', 'jeroniza@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 8, 3);
 
 insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
-'Tommy', '2456856', 'tommy@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+'Tommy', '2456856', 'tommy@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 9, 3);
 
 insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
-'Claisa', '2456856', 'claisa@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+'Claisa', '2456856', 'claisa@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 9, 3);
 
 insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
-'Bianca', '2456856', 'bianca@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
+'Bianca', '2456856', 'bianca@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 9, 3);
+
+
+
+
+
+
+SELECT tb_cliente.*, tb_cidade.nome_cidade as nome_cidade, tb_estado.nome_estado as nome_estado  FROM tb_cliente
+                INNER JOIN tb_cidade ON(tb_cliente.id_cidade = tb_cidade.id_cidade)
+                INNER JOIN tb_estado ON(tb_cidade.id_estado = tb_estado.id_estado)
+                 WHERE id_cliente = (2) LIMIT 1;

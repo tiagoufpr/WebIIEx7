@@ -56,8 +56,8 @@
                 out.println("<td>" + clientes.getRuaCliente() + "</td>");
                 out.println("<td>" + clientes.getNrCliente() + "</td>");
                 out.println("<td>" + clientes.getCepCliente() + "</td>");
-                out.println("<td>" + clientes.getCidadeCliente() + "</td>");
-                out.println("<td>" + clientes.getEstadoCliente() + "</td>");
+                out.println("<td>" + clientes.getNomeCidade() + "</td>");
+                out.println("<td>" + clientes.getNomeEstado() + "</td>");
 
                 out.println("</tr>");
 

@@ -23,7 +23,9 @@ public class Cliente implements Serializable{
     private int nrCliente;
     private String cepCliente;
     private int idCidade;
+    private String NomeCidade;
     private int idEstado;
+    private String NomeEstado;
     
     public Cliente(){
     }
@@ -108,4 +110,19 @@ public class Cliente implements Serializable{
         this.idEstado = idEstado;
     }
     
+        public String getNomeCidade() {
+        return NomeCidade;
+    }
+
+    public void setNomeCidade(String NomeCidade) {
+        this.NomeCidade = NomeCidade;
+    }
+
+    public String getNomeEstado() {
+        return NomeEstado;
+    }
+
+    public void setNomeEstado(String NomeEstado) {
+        this.NomeEstado = NomeEstado;
+    }
 }

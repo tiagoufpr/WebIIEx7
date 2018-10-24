@@ -50,7 +50,7 @@ public class ClienteDAO {
             cliente.setCepCliente(rs.getString("cep_cliente"));
             cliente.setCidadeCliente(rs.getInt("id_cidade"));
             cliente.setEstadoCliente(rs.getInt("id_estado"));
-            
+                 
             resultados.add(cliente);
         }
         
@@ -59,7 +59,10 @@ public class ClienteDAO {
 
     public Cliente selectClienteEspecifico(int id) throws SQLException {
 
-        String sql = "SELECT * FROM tb_cliente WHERE id_cliente = (?) LIMIT 1;";
+        String sql = " SELECT tb_cliente.*, tb_cidade.nome_cidade as nome_cidade, tb_estado.nome_estado as nome_estado  FROM tb_cliente "
+                + " INNER JOIN tb_cidade ON(tb_cliente.id_cidade = tb_cidade.id_cidade) "
+                + " INNER JOIN tb_estado ON(tb_cidade.id_estado = tb_estado.id_estado) "
+                + " WHERE id_cliente = (?) LIMIT 1; ";
         PreparedStatement st = con.prepareStatement(sql);
         st.setInt(1, id);
 
@@ -76,7 +79,10 @@ public class ClienteDAO {
             cliente.setNrCliente(rs.getInt("nr_cliente"));
             cliente.setCepCliente(rs.getString("cep_cliente"));
             cliente.setCidadeCliente(rs.getInt("id_cidade"));
+            cliente.setNomeCidade(rs.getString("nome_cidade"));
             cliente.setEstadoCliente(rs.getInt("id_estado"));
+            cliente.setNomeEstado(rs.getString("nome_estado"));
+            
             return cliente;
         }
         return null;
