@@ -78,8 +78,8 @@
 
                 
                 Estado:
-                <select name="uf" id ="estado2" onChange="getCidades(estado2.value)>
-                    <option value="">Selecione</option>
+                <select name="uf" id ="estado2" onChange="getCidades(estado2.value)">
+                    <option value="0">Selecione</option>
                         <c:forEach items="${listaestados}" var="estado">  
                             <option value="${estado.idEstado}">${estado.nomeEstado}</option>
                         </c:forEach>
@@ -88,7 +88,7 @@
                 <br/>
                 
                 Cidade:
-                <select name="cidade">
+                <select name="cidadeAJAX" id="cidadeAJAX">
                     <option value="">Selecione</option>           
                 </select>
 

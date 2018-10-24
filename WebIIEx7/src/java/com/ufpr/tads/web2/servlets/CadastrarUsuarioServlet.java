@@ -54,7 +54,7 @@ public class CadastrarUsuarioServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<p style='color:blue;'> Usuário cadastrado com sucesso!!" + "<br>");           
-            out.println("<a href='PortalServlet'>Cadastrar Outro!</a>"); 
+            out.println("<a href='portal.jsp'>Cadastrar Outro!</a>"); 
             out.println("</body>");
             out.println("</html>");
         }

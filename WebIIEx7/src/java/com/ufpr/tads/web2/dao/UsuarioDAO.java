@@ -45,17 +45,16 @@ public class UsuarioDAO {
     }
     
     public void inserir(Usuario usuario){
-        String sql = "insert into tb_usuario (id_usuario,login_usuario,senha_usuario, nome_usuario) values (?,?,?,?)";
+        String sql = "insert into tb_usuario (login_usuario,senha_usuario, nome_usuario) values (?,?,?)";
         
         try {
             Connection conn = new ConnectionFactory().getConnection();
             PreparedStatement stmt;
             
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, 5);
-            stmt.setString(2, usuario.getLoginUsuario());
-            stmt.setString(3, usuario.getSenhaUsuario());
-            stmt.setString(4, usuario.getNomeUsuario());
+            stmt.setString(1, usuario.getLoginUsuario());
+            stmt.setString(2, usuario.getSenhaUsuario());
+            stmt.setString(3, usuario.getNomeUsuario());
             stmt.execute();  
 
             conn.close();
