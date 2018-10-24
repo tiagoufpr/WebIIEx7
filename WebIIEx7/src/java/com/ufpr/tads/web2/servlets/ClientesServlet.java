@@ -147,7 +147,7 @@ public class ClientesServlet extends HttpServlet {
                             int nr = Integer.parseInt(request.getParameter("numero"));
                             cliente.setNrCliente(nr);
                             cliente.setCidadeCliente(Integer.parseInt(request.getParameter("cidade")));
-                            cliente.setEstadoCliente(Integer.parseInt(request.getParameter("uf")));
+                            cliente.setEstadoCliente(Integer.parseInt(request.getParameter("estado")));
                             ClientesFacade.inserir(cliente);
                             response.sendRedirect(request.getContextPath() + "/ClientesServlet");
                             break;

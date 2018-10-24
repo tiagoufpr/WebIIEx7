@@ -34,9 +34,9 @@
                 success : function(data) {
                 // Se sucesso, limpa e preenche a combo de cidade
                 // alert(JSON.stringify(data));
-                $("#cidadeAJAX").empty();
+                $("#cidade").empty();
                 $.each(data, function(i, obj) {
-                $("#cidadeAJAX").append('<option value=' + obj.idCidade + '>' + obj.nomeCidade + '</option>');
+                $("#cidade").append('<option value=' + obj.idCidade + '>' + obj.nomeCidade + '</option>');
                 });
 
 
@@ -78,7 +78,7 @@
 
                 
                 Estado:
-                <select name="uf" id ="estado2" onChange="getCidades(estado2.value)">
+                <select name="estado" id ="estado" onChange="getCidades(estado.value)">
                     <option value="0">Selecione</option>
                         <c:forEach items="${listaestados}" var="estado">  
                             <option value="${estado.idEstado}">${estado.nomeEstado}</option>
@@ -88,7 +88,7 @@
                 <br/>
                 
                 Cidade:
-                <select name="cidadeAJAX" id="cidadeAJAX">
+                <select name="cidade" id="cidade">
                     <option value="">Selecione</option>           
                 </select>
 
@@ -108,14 +108,14 @@
                 Nome: <input type="text" name="nome" > <br/>
                 CPF: <input type="text" name="cpf" ><br/>
                 Email: <input type="text" name="email" ><br/>
-                Data: <input type="text" name="data" ><br/>
+                Data: <input type="date" name="data" ><br/>
                 Rua: <input type="text" name="rua" ><br/>
                 Número: <input type="text" name="numero" ><br/>
                 CEP: <input type="text" name="cep" ><br/>
 
                 
                 Estado:
-                <select name="uf" id ="estado" onChange="getCidades(estado.value)">
+                <select name="estado" id ="estado" onChange="getCidades(estado.value)">
                     <option value="">Selecione</option>
                         <c:forEach items="${listaestados}" var="estado">  
                             <option value="${estado.idEstado}">${estado.nomeEstado}</option>
@@ -125,7 +125,7 @@
                 
 
                 Cidade AJAX:
-                <select name="cidadeAJAX" id="cidadeAJAX">
+                <select name="cidade" id="cidade">
                     <option value="">Selecione</option>
                 </select>
                 <br/>
