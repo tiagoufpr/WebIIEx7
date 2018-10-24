@@ -50,7 +50,7 @@
             <br/>
   
             Estado:
-            <select name="uf" >
+            <select name="estado" >
                 <option value="">Selecione</option>
                     <c:forEach items="${listaestados}" var="estado">  
                         <option value="${estado.idEstado}">${estado.nomeEstado}</option>
