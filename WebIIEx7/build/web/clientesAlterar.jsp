@@ -63,8 +63,5 @@
             
             <input type="submit" value="Alterar"> <input type="submit" value="Cancelar" formaction="ClientesServlet">
         </form>
-        
-
-            
     </body>
 </html>

@@ -69,7 +69,6 @@ id_estado integer
 );
 
 
-
 insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
 'Tiago', '2456856', 'tiago@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 1, 1);
 
@@ -111,4 +110,52 @@ insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, 
 SELECT tb_cliente.*, tb_cidade.nome_cidade as nome_cidade, tb_estado.nome_estado as nome_estado  FROM tb_cliente
                 INNER JOIN tb_cidade ON(tb_cliente.id_cidade = tb_cidade.id_cidade)
                 INNER JOIN tb_estado ON(tb_cidade.id_estado = tb_estado.id_estado)
-                 WHERE id_cliente = (2) LIMIT 1;
+				WHERE id_cliente = (2) LIMIT 1;
+                 
+create table tb_produto (
+id_produto serial primary key,
+nome_produto varchar(100)
+);
+
+insert into tb_produto (nome_produto) values ('Banana');
+insert into tb_produto (nome_produto) values ('PC');
+insert into tb_produto (nome_produto) values ('Garrafa pet');
+insert into tb_produto (nome_produto) values ('Televisao');
+insert into tb_produto (nome_produto) values ('Microfone');
+insert into tb_produto (nome_produto) values ('Salsicha');
+insert into tb_produto (nome_produto) values ('Abacate');
+insert into tb_produto (nome_produto) values ('Morango');
+insert into tb_produto (nome_produto) values ('Chocolate');
+insert into tb_produto (nome_produto) values ('Batata');
+
+
+create table tb_tipo_atendimento (
+id_tipo_atendimento  serial primary key,
+nome_tipo_atendimento varchar(50)
+);
+
+DROP table tb_tipo_atendimento;
+
+insert into tb_tipo_atendimento (nome_tipo_atendimento) values ('reclamação');
+insert into tb_tipo_atendimento (nome_tipo_atendimento) values ('dúvida');
+insert into tb_tipo_atendimento (nome_tipo_atendimento) values ('sugestão');
+insert into tb_tipo_atendimento (nome_tipo_atendimento) values ('elogio');
+
+
+create table tb_atendimento (
+id_atendimento  serial primary key,
+dt_hr_atendimento DATETIME,
+dsc_atendimento  varchar(250),
+id_produto  BIGINT,
+id_tipo_atendimento BIGINT,
+id_usuario BIGINT,
+id_cliente BIGINT,
+res_atendimento char(1),
+CHECK (res_atendimento='m' OR res_atendimento='M' OR res_atendimento='f' OR res_atendimento='F'),
+FOREIGN KEY (id_produto) REFERENCES tb_produto(id_produto),
+FOREIGN KEY (id_tipo_atendimento) REFERENCES tb_tipo_atendimento(id_tipo_atendimento),
+FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario),
+FOREIGN KEY (id_cliente) REFERENCES tb_cliente(id_cliente)
+);
+
+DROP table tb_atendimento;
