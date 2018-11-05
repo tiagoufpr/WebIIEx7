@@ -15,6 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,7 +36,7 @@ public class CadastrarUsuarioServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");
         
         try (PrintWriter out = response.getWriter()) {
@@ -40,9 +44,12 @@ public class CadastrarUsuarioServlet extends HttpServlet {
             String login = request.getParameter("login");
             String senha = request.getParameter("senha");
             
-            
+            MessageDigest algorithm = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = algorithm.digest(senha.getBytes("UTF-8"));
+            String cripto = new String(messageDigest);
+                        
             UsuarioDAO usuarioDAO = new UsuarioDAO();
-            Usuario usuario = new Usuario(0, login, senha, nome);
+            Usuario usuario = new Usuario(0, login, cripto, nome);
             
             usuarioDAO.inserir(usuario);
             
@@ -72,7 +79,11 @@ public class CadastrarUsuarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(CadastrarUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -86,7 +97,11 @@ public class CadastrarUsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(CadastrarUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -90,7 +90,7 @@ public class AtendimentoDAO {
     }
 
     public void alterarAtendimento(java.util.Date dataHora, String descricao, int produto, int tipoAtendimento, int usuario, int cliente, String resolvido, int id) throws SQLException {
-        try{
+        try {
             String sql = "UPDATE tb_atendimento SET dt_hr_atendimento = ? , dsc_atendimento = ?, " +
                         "id_produto = ?, id_tipo_atendimento = ?, id_usuario = ?, id_cliente = ?, " + 
                         "res_atendimento = ? WHERE id_atendimento = ?";
@@ -109,25 +109,28 @@ public class AtendimentoDAO {
 
             st.executeUpdate();
         } catch(SQLException e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
     
     public void insertAtendimento(java.util.Date dataHora, String descricao, int produto, int tipoAtendimento, int usuario, int cliente, String resolvido) throws SQLException {
-        
-        String sql = "INSERT INTO tb_atendimento (dt_hr_atendimento, dsc_atendimento, id_produto, " + 
-                    "id_tipo_atendimento, id_usuario, id_cliente, res_atendimento)" + 
-                    " VALUES ((?), (?), (?), (?), (?), (?), (?), (?), (?))";
-        PreparedStatement st = con.prepareStatement(sql);
-        
-        st.setDate(1, new java.sql.Date(dataHora.getTime()));
-        st.setString(2, descricao);
-        st.setInt(3, produto);
-        st.setInt(4, tipoAtendimento);
-        st.setInt(5, usuario);
-        st.setInt(6, cliente);
-        st.setString(7, resolvido);
-        
-        st.executeUpdate();
+        try {
+            String sql = "INSERT INTO tb_atendimento (dt_hr_atendimento, dsc_atendimento, id_produto, " + 
+                        "id_tipo_atendimento, id_usuario, id_cliente, res_atendimento)" + 
+                        " VALUES ((?), (?), (?), (?), (?), (?), (?))";
+            PreparedStatement st = con.prepareStatement(sql);
+
+            st.setDate(1, new java.sql.Date(dataHora.getTime()));
+            st.setString(2, descricao);
+            st.setInt(3, produto);
+            st.setInt(4, tipoAtendimento);
+            st.setInt(5, usuario);
+            st.setInt(6, cliente);
+            st.setString(7, resolvido);
+
+            st.executeUpdate();
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
     }
 }

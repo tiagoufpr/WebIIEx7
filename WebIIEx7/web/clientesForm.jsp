@@ -67,34 +67,31 @@
             <h1>Alterar Dados do cliente</h1>
 
             <form action="ClientesServlet?action=update" method="POST">
-                Nome: <input type="text" name="nome" value=${alterar2.nomeCliente}>  <br/>
+                Nome: <input type="text" name="nome" value=${alterar2.nomeCliente} required maxlength="100"> <br/>
                 Id: <input type="text" name="id" value=${alterar2.idCliente}> <br/>
-                CPF: <input type="text" name="cpf" value=${alterar2.cpfCliente}> <br/>
-                Email: <input type="text" name="email" value=${alterar2.emailCliente}> <br/>
-                Data: <input type="date" name="data" value=${alterar2.dataCliente}> <br/>
-                Rua: <input type="text" name="rua" value=${alterar2.ruaCliente}> <br/>
-                Número: <input type="text" name="numero" value=${alterar2.nrCliente}> <br/>
-                CEP: <input type="text" name="cep" value=${alterar2.cepCliente}> <br/>
-
-                
+                CPF: <input type="text" name="cpf" value=${alterar2.cpfCliente} required
+                            maxlength="11"  minlength="11" pattern="[0-9]{11}" title="only numbers"> <br/>
+                Email: <input type="text" name="email" value=${alterar2.emailCliente} maxlength="100"
+                              required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="xxx@xxx.xxx"> <br/>
+                Data: <input type="date" name="data" value=${alterar2.dataCliente} required> <br/>
+                Rua: <input type="text" name="rua" value=${alterar2.ruaCliente} required maxlength="100"> <br/>
+                Número: <input type="number" name="numero" value=${alterar2.nrCliente} 
+                               required pattern="[0-9]"> <br/>
+                CEP: <input type="text" name="cep" value=${alterar2.cepCliente} required
+                            pattern="[0-9]{8}" title="only numbers" maxlength="8"> <br/>
                 Estado:
-                <select name="estado" id ="estado" onChange="getCidades(estado.value)">
-                    <option value="0">Selecione</option>
+                <select name="estado" id ="estado" onChange="getCidades(estado.value)" required>
+                    <option value="">Selecione</option>
                         <c:forEach items="${listaestados}" var="estado">  
                             <option value="${estado.idEstado}">${estado.nomeEstado}</option>
                         </c:forEach>
                 </select>
-                
                 <br/>
-                
                 Cidade:
-                <select name="cidade" id="cidade">
+                <select name="cidade" id="cidade" required>
                     <option value="">Selecione</option>           
                 </select>
-
-                
                 </br></br>
-
                 <input type="submit" value="Alterar"> <input type="submit" value="Cancelar" formaction="ClientesServlet">
             </form>
         </c:if>
@@ -105,17 +102,19 @@
             <h1>Novo do cliente</h1>
 
             <form action="ClientesServlet?action=new" method="POST">
-                Nome: <input type="text" name="nome" > <br/>
-                CPF: <input type="text" name="cpf" ><br/>
-                Email: <input type="text" name="email" ><br/>
-                Data: <input type="date" name="data" ><br/>
-                Rua: <input type="text" name="rua" ><br/>
-                Número: <input type="text" name="numero" ><br/>
-                CEP: <input type="text" name="cep" ><br/>
-
+                Nome: <input type="text" name="nome" required maxlength="100"> <br/>
+                CPF: <input type="text" name="cpf" required
+                            maxlength="11" minlength="11" pattern="[0-9]{11}" title="only numbers"><br/>
+                Email: <input type="text" name="email" required maxlength='100'
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="xxx@xxx.xxx"><br/>
+                Data: <input type="date" name="data" required><br/>
+                Rua: <input type="text" name="rua" required maxlength='100'><br/>
+                Número: <input type="number" name="numero" required><br/>
+                CEP: <input type="text" name="cep" required
+                            maxlength="8" pattern="[0-9]{8}" title="only numbers"><br/>
                 
                 Estado:
-                <select name="estado" id ="estado" onChange="getCidades(estado.value)">
+                <select name="estado" id ="estado" onChange="getCidades(estado.value)" required>
                     <option value="">Selecione</option>
                         <c:forEach items="${listaestados}" var="estado">  
                             <option value="${estado.idEstado}">${estado.nomeEstado}</option>
@@ -125,19 +124,14 @@
                 
 
                 Cidade AJAX:
-                <select name="cidade" id="cidade">
+                <select name="cidade" id="cidade" required>
                     <option value="">Selecione</option>
                 </select>
                 <br/>
-                
-                
-
                 <br/><br/>
-
                 <input type="submit" value="Salvar"> <input type="submit" value="Cancelar" formaction="ClientesServlet">
             </form>
         </c:if>
-        
         </br></br> <a href="#void" onclick="getCidades();" style="color: darkblue">Carregar Cidade</a>
     </body>
 </html>

@@ -6,16 +6,9 @@
 package com.ufpr.tads.web2.servlets;
 
 import com.ufpr.tads.web2.beans.Atendimento;
-import com.ufpr.tads.web2.beans.Cidade;
-import com.ufpr.tads.web2.beans.Cliente;
-import com.ufpr.tads.web2.beans.Estado;
 import com.ufpr.tads.web2.beans.LoginBean;
 import com.ufpr.tads.web2.facade.AtendimentoFacade;
-import com.ufpr.tads.web2.facade.CidadesFacade;
-import com.ufpr.tads.web2.facade.ClientesFacade;
-import com.ufpr.tads.web2.facade.EstadosFacade;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,8 +42,8 @@ public class AtendimentoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+       
+        try  {
             HttpSession session = request.getSession();
             LoginBean loginBean = (LoginBean) session.getAttribute("login");
            
@@ -79,9 +72,7 @@ public class AtendimentoServlet extends HttpServlet {
                             break;
                         case "remove":
                             id = Integer.parseInt(request.getParameter("id"));
-                            ClientesFacade.excluir(id);
-                            //rd = getServletContext().getRequestDispatcher("/ClientesServlet");
-                            //rd.forward(request, response);
+                            AtendimentoFacade.excluir(id);
                             response.sendRedirect(request.getContextPath() + "/AtendimentoServlet");
                             break;
                         case "update":
@@ -103,7 +94,7 @@ public class AtendimentoServlet extends HttpServlet {
                             
                             atendimento.setIdUsuario(Integer.parseInt(request.getParameter("usuario")));
                             atendimento.setIdCliente(Integer.parseInt(request.getParameter("cliente")));
-                            atendimento.setResAtendimento("resolvido");
+                            atendimento.setResAtendimento(request.getParameter("resolvido"));
 
                             AtendimentoFacade.alterar(atendimento);
                             response.sendRedirect(request.getContextPath() + "/AtendimentoServlet");
@@ -129,32 +120,38 @@ public class AtendimentoServlet extends HttpServlet {
                             
                             atendimento.setIdUsuario(Integer.parseInt(request.getParameter("usuario")));
                             atendimento.setIdCliente(Integer.parseInt(request.getParameter("cliente")));
-                            atendimento.setResAtendimento("resolvido");
+                            atendimento.setResAtendimento(request.getParameter("resolvido"));
                             
                             AtendimentoFacade.inserir(atendimento);
                             response.sendRedirect(request.getContextPath() + "/AtendimentoServlet");
                             break;
-                        case "formCliente":
+                        case "formAtendimento":
                             id = Integer.parseInt(request.getParameter("id"));
-                            atendimento = AtendimentoFacade.buscar(id);
-                            request.setAttribute("alterar2", atendimento);
-                           //parei aqui
-                            rd = getServletContext().getRequestDispatcher("/clientesForm.jsp");
-                            rd.forward(request, response);
-                            break;
+                            try {
+                                atendimento = AtendimentoFacade.buscar(id);
+                                request.setAttribute("alterar2", atendimento);
+                                rd = getServletContext().getRequestDispatcher("/atendimentosForm.jsp");
+                                rd.forward(request, response);
+                                break;
+                            } catch (IOException | ClassNotFoundException | SQLException | ServletException e){
+                                System.out.println("Erro: " + e);
+                            }
+
                         default:
-/*                            clientes = ClientesFacade.buscarTodos();
-                            request.setAttribute("listar", clientes);
-                            rd = getServletContext().getRequestDispatcher("/clientesListar.jsp");
+                            atendimentos = AtendimentoFacade.buscarTodos();
+                            request.setAttribute("listar", atendimentos);
+                            rd = getServletContext().getRequestDispatcher("/atendimentosListar.jsp");
                             rd.forward(request, response);
-*/                    }
+                    }
                 } else {
-/*                    clientes = ClientesFacade.buscarTodos();
-                    request.setAttribute("listar", clientes);
-                    rd = getServletContext().getRequestDispatcher("/clientesListar.jsp");
+                    atendimentos = AtendimentoFacade.buscarTodos();
+                    request.setAttribute("listar", atendimentos);
+                    rd = getServletContext().getRequestDispatcher("/atendimentosListar.jsp");
                     rd.forward(request, response);
-*/                }
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

@@ -15,6 +15,8 @@ senha_usuario varchar(50),
 nome_usuario varchar(100)
 );
 
+select * from tb_usuario;
+
 insert into tb_usuario (login_usuario, senha_usuario, nome_usuario) values ('tiago', 'senha', 'Tiago');
 insert into tb_usuario (login_usuario, senha_usuario, nome_usuario) values ('itay', 'senha', 'Itay');
 insert into tb_usuario (login_usuario, senha_usuario, nome_usuario) values ('admin', 'admin', 'Administrador');
@@ -56,16 +58,16 @@ DROP table tb_cliente;
 SELECT * FROM tb_cliente;
 
 create table tb_cliente (
-id_cliente serial primary key,
-cpf_cliente varchar(100),
-nome_cliente varchar(100),
-email_cliente varchar(100),
-data_cliente date,
-rua_cliente varchar(100),
-nr_cliente integer,
-cep_cliente char(8),
-id_cidade integer,
-id_estado integer
+	id_cliente serial primary key,
+	cpf_cliente varchar(100),
+	nome_cliente varchar(100),
+	email_cliente varchar(100),
+	data_cliente date,
+	rua_cliente varchar(100),
+	nr_cliente integer,
+	cep_cliente char(8),
+	id_cidade integer,
+	id_estado integer
 );
 
 
@@ -101,10 +103,6 @@ insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, 
 
 insert into tb_cliente (nome_cliente, cpf_cliente, email_cliente, data_cliente, cep_cliente, rua_cliente, nr_cliente, id_cidade, id_estado) values (
 'Bianca', '2456856', 'bianca@email.com.br', '1986-01-30', '52545548', 'Quadra QNN 5 Conjunto E', 745, 9, 3);
-
-
-
-
 
 
 SELECT tb_cliente.*, tb_cidade.nome_cidade as nome_cidade, tb_estado.nome_estado as nome_estado  FROM tb_cliente
@@ -150,8 +148,8 @@ id_produto  BIGINT,
 id_tipo_atendimento BIGINT,
 id_usuario BIGINT,
 id_cliente BIGINT,
-res_atendimento char(1),
-CHECK (res_atendimento='m' OR res_atendimento='M' OR res_atendimento='f' OR res_atendimento='F'),
+res_atendimento varchar(1),
+CHECK (res_atendimento='s' OR res_atendimento='S' OR res_atendimento='n' OR res_atendimento='N'),
 FOREIGN KEY (id_produto) REFERENCES tb_produto(id_produto),
 FOREIGN KEY (id_tipo_atendimento) REFERENCES tb_tipo_atendimento(id_tipo_atendimento),
 FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario),
@@ -159,3 +157,8 @@ FOREIGN KEY (id_cliente) REFERENCES tb_cliente(id_cliente)
 );
 
 DROP table tb_atendimento;
+
+insert into tb_atendimento (dt_hr_atendimento, dsc_atendimento, id_produto, id_tipo_atendimento, id_usuario, id_cliente, res_atendimento)
+values ('1986-01-30', 'desc', 1, 1, 1, 1, 's');
+
+select * from tb_atendimento;

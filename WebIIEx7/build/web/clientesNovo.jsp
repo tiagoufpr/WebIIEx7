@@ -30,17 +30,18 @@
         <h1>Dados do cliente</h1>
         
         <form action="ClientesServlet?action=new" method="POST">
-            Nome: <input type="text" name="nome" > <br/>
-            CPF: <input type="text" name="cpf" ><br/>
-            Email: <input type="text" name="email" ><br/>
-            Data: <input type="date" name="data" ><br/>
-            Rua: <input type="text" name="rua" ><br/>
-            Número: <input type="text" name="numero" ><br/>
-            CEP: <input type="text" name="cep" ><br/>
+            Nome: <input type="text" name="nome" required maxlength="100"> <br/>
+            CPF: <input type="text" name="cpf" required maxlength="11" minlength="11" pattern="[0-9]{11}" title="only numbers"><br/>
+            Email: <input type="text" name="email" required maxlength="100"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="xxx@xxx.xxx"><br/>
+            Data: <input type="date" name="data" required><br/>
+            Rua: <input type="text" name="rua" required maxlength="100"><br/>
+            Número: <input type="number" name="numero" required><br/>
+            CEP: <input type="text" name="cep" required maxlength="8" pattern="[0-9]{8}" title="only numbers"><br/>
       
             
             Cidade:
-            <select name="cidade">
+            <select name="cidade" required>
                 <option value="">Selecione</option>
                     <c:forEach items="${listacidades}" var="cidade">  
                         <option value="${cidade.idCidade}">${cidade.nomeCidade}</option>
@@ -50,7 +51,7 @@
             <br/>
   
             Estado:
-            <select name="estado" >
+            <select name="estado" required>
                 <option value="">Selecione</option>
                     <c:forEach items="${listaestados}" var="estado">  
                         <option value="${estado.idEstado}">${estado.nomeEstado}</option>
@@ -61,6 +62,10 @@
             
             <input type="submit" value="Salvar"> <input type="submit" value="Cancelar" formaction="ClientesServlet">
         </form>
-        
+        <c:if test="${cpfInvalido == true}">
+            <script>
+                alert("Você precisa inserir um CPF válido!");
+            </script>
+        </c:if>
     </body>
 </html>

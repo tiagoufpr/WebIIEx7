@@ -7,6 +7,7 @@ package com.ufpr.tads.web2.servlets;
 
 import com.ufpr.tads.web2.beans.Cidade;
 import com.ufpr.tads.web2.beans.Cliente;
+import com.ufpr.tads.web2.beans.Cpf;
 import com.ufpr.tads.web2.beans.Estado;
 import com.ufpr.tads.web2.beans.LoginBean;
 import com.ufpr.tads.web2.dao.ClienteDAO;
@@ -52,8 +53,8 @@ public class ClientesServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+
+        try {
 
             HttpSession session = request.getSession();
             LoginBean loginBean = (LoginBean) session.getAttribute("login");
@@ -93,30 +94,45 @@ public class ClientesServlet extends HttpServlet {
                             response.sendRedirect(request.getContextPath() + "/ClientesServlet");
                             break;
                         case "update":
-                            cliente = new Cliente();
-                            id = Integer.parseInt(request.getParameter("id"));
-                            cliente.setIdCliente(id);
-                            cliente.setCpfCliente(request.getParameter("cpf"));
-                            cliente.setNomeCliente(request.getParameter("nome"));
-                            cliente.setEmailCliente(request.getParameter("email"));
-                            String dataString = request.getParameter("data");
+                            String formCpf = request.getParameter("cpf");
+                            Cpf validaCpf = new Cpf();
+                            boolean isValid = validaCpf.isCPF(formCpf);
+                            if (isValid) {
+                                cliente = new Cliente();
+                                id = Integer.parseInt(request.getParameter("id"));
+                                cliente.setIdCliente(id);
+                                cliente.setCpfCliente(formCpf);
+                                cliente.setNomeCliente(request.getParameter("nome"));
+                                cliente.setEmailCliente(request.getParameter("email"));
+                                String dataString = request.getParameter("data");    
+                                try {
+                                    SimpleDateFormat simnpleDataFormat = new SimpleDateFormat("yyyy-MM-dd");
+                                    Date data = simnpleDataFormat.parse(dataString);
+                                    cliente.setDataCliente(data);
+                                }catch (ParseException e) {
+                                    System.out.println("Erro Parse: " + e);
+                                }
 
-                            try {
-                                SimpleDateFormat simnpleDataFormat = new SimpleDateFormat("yyyy-MM-dd");
-                                Date data = simnpleDataFormat.parse(dataString);
-                                cliente.setDataCliente(data);
-                            }catch (ParseException e) {
-                                System.out.println("Erro Parse: " + e);
-                            }
-                            
-                            cliente.setCepCliente(request.getParameter("cep"));
-                            cliente.setRuaCliente(request.getParameter("rua"));
-                            int numero = Integer.parseInt(request.getParameter("numero"));
-                            cliente.setNrCliente(numero);
-                            cliente.setCidadeCliente(Integer.parseInt(request.getParameter("cidade")));
-                            cliente.setEstadoCliente(Integer.parseInt(request.getParameter("estado")));
-                            ClientesFacade.alterar(cliente);
-                            response.sendRedirect(request.getContextPath() + "/ClientesServlet");
+                                cliente.setCepCliente(request.getParameter("cep"));
+                                cliente.setRuaCliente(request.getParameter("rua"));
+                                int numero = Integer.parseInt(request.getParameter("numero"));
+                                cliente.setNrCliente(numero);
+                                cliente.setCidadeCliente(Integer.parseInt(request.getParameter("cidade")));
+                                cliente.setEstadoCliente(Integer.parseInt(request.getParameter("estado")));
+                                ClientesFacade.alterar(cliente);
+                                response.sendRedirect(request.getContextPath() + "/ClientesServlet");
+                            } else {
+                               id = Integer.parseInt(request.getParameter("id"));
+                               cliente = ClientesFacade.buscar(id);
+                               request.setAttribute("alterar", cliente);
+                               request.setAttribute("cpfInvalido", true);
+                               cidades = CidadesFacade.buscarTodos();
+                               request.setAttribute("listacidades", cidades);
+                               estados = EstadosFacade.buscarTodos();
+                               request.setAttribute("listaestados", estados);
+                               rd = getServletContext().getRequestDispatcher("/clientesAlterar.jsp");
+                               rd.forward(request, response);
+                           }
                             break;
                         case "formNew":
                             List<Cidade> cidades2 = CidadesFacade.buscarTodos();
@@ -128,28 +144,43 @@ public class ClientesServlet extends HttpServlet {
                             rd.forward(request, response);
                             break;
                         case "new":
-                            cliente = new Cliente();
-                            cliente.setNomeCliente(request.getParameter("nome"));
-                            cliente.setCpfCliente(request.getParameter("cpf"));
-                            cliente.setEmailCliente(request.getParameter("email"));
-                            String dataS = request.getParameter("data");
+                            formCpf = request.getParameter("cpf");
+                            validaCpf = new Cpf();
+                            isValid = validaCpf.isCPF(formCpf);
+                            if (isValid) {
+                                cliente = new Cliente();
+                                cliente.setNomeCliente(request.getParameter("nome"));
+                                cliente.setCpfCliente(request.getParameter("cpf"));
+                                cliente.setEmailCliente(request.getParameter("email"));
+                                String dataS = request.getParameter("data");
 
-                            try {
-                                SimpleDateFormat simnpleDataFormat = new SimpleDateFormat("yyyy-MM-dd");
-                                Date data = simnpleDataFormat.parse(dataS);
-                                cliente.setDataCliente(data);
-                            }catch (ParseException e) {
-                                System.out.println("Erro Parse: " + e);
+                                try {
+                                    SimpleDateFormat simnpleDataFormat = new SimpleDateFormat("yyyy-MM-dd");
+                                    Date data = simnpleDataFormat.parse(dataS);
+                                    cliente.setDataCliente(data);
+                                }catch (ParseException e) {
+                                    System.out.println("Erro Parse: " + e);
+                                }
+
+                                cliente.setCepCliente(request.getParameter("cep"));
+                                cliente.setRuaCliente(request.getParameter("rua"));
+                                int nr = Integer.parseInt(request.getParameter("numero"));
+                                cliente.setNrCliente(nr);
+                                cliente.setCidadeCliente(Integer.parseInt(request.getParameter("cidade")));
+                                cliente.setEstadoCliente(Integer.parseInt(request.getParameter("estado")));
+                                ClientesFacade.inserir(cliente);
+                                response.sendRedirect(request.getContextPath() + "/ClientesServlet");
                             }
-                            
-                            cliente.setCepCliente(request.getParameter("cep"));
-                            cliente.setRuaCliente(request.getParameter("rua"));
-                            int nr = Integer.parseInt(request.getParameter("numero"));
-                            cliente.setNrCliente(nr);
-                            cliente.setCidadeCliente(Integer.parseInt(request.getParameter("cidade")));
-                            cliente.setEstadoCliente(Integer.parseInt(request.getParameter("estado")));
-                            ClientesFacade.inserir(cliente);
-                            response.sendRedirect(request.getContextPath() + "/ClientesServlet");
+                            else {
+                                cidades2 = CidadesFacade.buscarTodos();
+                                request.setAttribute("listacidades", cidades2);
+                                request.setAttribute("cpfInvalido", true);
+                                estados2 = EstadosFacade.buscarTodos();
+                                request.setAttribute("listaestados", estados2);
+
+                                rd = getServletContext().getRequestDispatcher("/clientesNovo.jsp");
+                                rd.forward(request, response);
+                            }
                             break;
                         case "formCliente":
                             id = Integer.parseInt(request.getParameter("id"));
@@ -175,6 +206,8 @@ public class ClientesServlet extends HttpServlet {
                     rd.forward(request, response);
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

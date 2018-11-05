@@ -4,6 +4,8 @@
     Author     : Itay
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page errorPage="/erro.jsp"%>
 <%@page import="com.ufpr.tads.web2.beans.Atendimento"%>
 <%@page import="com.ufpr.tads.web2.beans.Cliente"%>
 <%@page import="com.ufpr.tads.web2.beans.LoginBean"%>
@@ -30,34 +32,29 @@
             </jsp:forward>
         </c:if>
             
-        <%    
-            Atendimento atendimento = (Atendimento) request.getAttribute("visualizar");
-
-            out.println("<table>");
-            out.println("<tr>");
-            out.println("<th>ID </th>");
-            out.println("<th>Data e hora</th>");
-            out.println("<th>Descrição</th>");
-            out.println("<th>ID produto</th>");
-            out.println("<th>ID tipo atendimento</th>");
-            out.println("<th>ID usuario</th>");
-            out.println("<th>ID cliente</th>");
-            out.println("<th>Resolvido</th>");
-            out.println("</tr>");
-
-            out.println("<tr>");
-            out.println("<td>" + atendimento.getIdAtendimento()+ "</td>");  
-            out.println("<td>" + atendimento.getDtHrAtendimento()+ "</td>"); 
-            out.println("<td>" + atendimento.getDscAtendimento() + "</td>");
-            out.println("<td>" + atendimento.getIdProduto() + "</td>");
-            out.println("<td>" + atendimento.getIdTipoAtendimento() + "</td>");
-            out.println("<td>" + atendimento.getIdUsuario() + "</td>");
-            out.println("<td>" + atendimento.getIdCliente() + "</td>");
-            out.println("<td>" + atendimento.getResAtendimento() + "</td>");
-            out.println("</tr>");
-
-            out.println("</table>");
-        %>
+        <jsp:useBean id="visualizar" class="com.ufpr.tads.web2.beans.Atendimento" scope="request"/>
+        <table>
+            <tr>
+                <th>ID </th>
+                <th>Data e hora</th>
+                <th>Descrição</th>
+                <th>ID produto</th>
+                <th>ID tipo atendimento</th>
+                <th>ID usuario</th>
+                <th>ID cliente</th>
+                <th>Resolvido</th>
+            </tr>
+            <tr>
+                <td> <jsp:getProperty name="visualizar" property="idAtendimento"/> </td>  
+                <td> <jsp:getProperty name="visualizar" property="dtHrAtendimento"/> </td>
+                <td> <jsp:getProperty name="visualizar" property="dscAtendimento"/> </td>
+                <td> <jsp:getProperty name="visualizar" property="idProduto"/> </td>
+                <td> <jsp:getProperty name="visualizar" property="idTipoAtendimento"/> </td>
+                <td> <jsp:getProperty name="visualizar" property="idUsuario"/> </td>
+                <td> <jsp:getProperty name="visualizar" property="idCliente"/> </td>
+                <td> <jsp:getProperty name="visualizar" property="resAtendimento"/> </td>
+            </tr>
+        </table>
         <br>
         <a href="AtendimentoServlet">Voltar</a>
     </body>

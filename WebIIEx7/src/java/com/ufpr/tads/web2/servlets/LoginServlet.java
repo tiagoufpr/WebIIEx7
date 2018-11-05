@@ -26,6 +26,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -43,7 +45,7 @@ public class LoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
@@ -53,7 +55,12 @@ public class LoginServlet extends HttpServlet {
             //response from form
             String loginForm = request.getParameter("login");
             String passwordForm = request.getParameter("password");
-            usuario = dao.selectUsuarioEspecifico(loginForm, passwordForm);
+            
+            MessageDigest algorithm = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = algorithm.digest(passwordForm.getBytes("UTF-8"));
+            String cripto = new String(messageDigest);
+            
+            usuario = dao.selectUsuarioEspecifico(loginForm, cripto);
             
             
             out.println("<!DOCTYPE html>");
@@ -62,8 +69,9 @@ public class LoginServlet extends HttpServlet {
             out.println("<title>Servlet LoginServlet</title>");            
             out.println("</head>");
             out.println("<body>");
+
             
-            if((usuario != null) && (usuario.getLoginUsuario().equals(loginForm)) && (usuario.getSenhaUsuario().equals(passwordForm))) {
+            if((usuario != null) && (usuario.getLoginUsuario().equals(loginForm)) && (usuario.getSenhaUsuario().equals(cripto))) {
                 LoginBean loginBean = new LoginBean();
                 loginBean.setIdUsuario(usuario.getIdUsuario());
                 loginBean.setNomeUsuario(usuario.getNomeUsuario());
@@ -100,7 +108,11 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -114,7 +126,11 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
     <!-- Latest compiled and minified CSS -->
@@ -21,11 +22,11 @@
             <br><br>
             <input type="submit" value="Logar">
         </form>
-        <%
-            if(request.getAttribute("msg") != null) {
-                out.println("<br/><p style=\"color: red\">"+ request.getAttribute("msg") +"</p>");
-            }
-        %>
+        
+        <c:if test="${msg != null}">
+            <br/>
+            <p style="color: red"> ${msg} </p>
+        </c:if>
     </body>
     <footer>
         <br/>
