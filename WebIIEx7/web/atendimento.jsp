@@ -36,17 +36,6 @@
         </c:if>
      
         <p id="demo"></p>
-        <script>
-        function jsRemover(i){
-            var r=confirm("Deseja Remover?");
-
-            if (r===true)
-              window.location.href = "AtendimentoServlet?action=remove&id=" +i;
-
-            document.getElementById("demo").innerHTML=x;
-        }
-        </script>
-
         
         <nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
           <div class="w3-container">
@@ -63,35 +52,47 @@
             <p>
                 <c:out value="${login.nomeUsuario}"/>
             </p>
-            <br/>            
-            <table>
-                <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Email</th>
-                    <th colspan="3">Ações</th>
-                </tr>
-
-                <c:forEach items="${listar}" var="atendimento">
+            <br/>
+            <div>
+                <table>
                     <tr>
-                    <td> ${atendimento.dtHrAtendimento} </td> 
-                    <td> ${atendimento.dscAtendimento} </td> 
-                    <td> ${atendimento.resAtendimento} </td>
-                    <td> <a href="AtendimentoServlet?action=show&id=${atendimento.idAtendimento}"><img src="Imagens/view.jpg" height="25" width="25px"></a></td>
-                    <td> <a href="AtendimentoServlet?action=formUpdate&id=${atendimento.idAtendimento}"><img src="Imagens/update.png" height="25" width="25px"></a></td>
-                    <td> <a href="#void" onclick="jsRemover(${atendimento.idAtendimento});"><img src="Imagens/remove.png" height="25" width="25px"></a></td>
+                        <th>Id Produto</th>
+                        <th>Produto</th>
                     </tr>
-                </c:forEach>
-            </table>
-            
-            <br>
-            <a href="AtendimentoServlet?action=formNew"  style="color: darkblue">Novo</a> |
-            <a href ='LogoutServlet' style="color: darkblue">Encerrar sessão</a>
-            
-            </br></br> <a href ='AtendimentoServlet?action=formAtendimento&id=1' style="color: darkblue">Form Atendimento - Existente</a>
-            
-            </br></br> <a href ='AtendimentoServlet?action=formAtendimento&id=20' style="color: darkblue">Form Atendimento - Novo</a>
 
+                    <jsp:useBean id="produtoDao" class="com.ufpr.tads.web2.dao.ProdutoDAO" scope="page"/>
+                    <c:forEach items="${produtoDao.selectProdutos()}" var="produto">
+                        <tr>
+                            <td> ${produto.idProduto} </td> 
+                            <td> ${produto.nomeProduto} </td> 
+                        </tr>
+                    </c:forEach>
+                </table>
+                <br/>
+                <table>
+                    <tr>
+                        <th>Id Produto</th>
+                        <th>Produto</th>
+                    </tr>
+
+                    <jsp:useBean id="tipoAtendimentoDao" class="com.ufpr.tads.web2.dao.TipoAtendimentoDAO" scope="page"/>
+                    <c:forEach items="${tipoAtendimentoDao.selectTipoAtendimento()}" var="tipoAtendimento">
+                        <tr>
+                            <td> ${tipoAtendimento.idTipoAtendimento} </td> 
+                            <td> ${tipoAtendimento.nomeTipoAtendimento} </td> 
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+            
+             <div>
+                <table>
+                    
+                    <!--AQUI ENTRA A TABELA DOS ATENDIMENTOS POR CLIENTE -->
+                    
+                </table>                 
+             </div>
+            
             <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
                 <jsp:useBean id="configuracao" class="com.ufpr.tads.web2.beans.ConfigBean" scope="application" />
               <footer class="w3-right">

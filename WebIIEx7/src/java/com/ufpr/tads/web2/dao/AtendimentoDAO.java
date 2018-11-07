@@ -20,7 +20,6 @@ import java.util.List;
  * @author Itay
  */
 public class AtendimentoDAO {
-    
     private Connection con;
 
     public AtendimentoDAO() throws SQLException, ClassNotFoundException {

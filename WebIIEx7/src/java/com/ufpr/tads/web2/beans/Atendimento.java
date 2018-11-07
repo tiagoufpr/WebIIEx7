@@ -86,5 +86,4 @@ public class Atendimento implements Serializable{
     public void setResAtendimento(String resAtendimento) {
         this.resAtendimento = resAtendimento;
     }
-    
 }

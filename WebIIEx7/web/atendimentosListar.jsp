@@ -54,6 +54,7 @@
           <div class="w3-bar-block">
             <a href="ClientesServlet" class="w3-bar-item w3-button w3-hover-white">Cadastro de Clientes</a>
             <a href="AtendimentoServlet" class="w3-bar-item w3-button w3-hover-white">Cadastro de novos atendimentos</a>
+            <a href="atendimento.jsp" class="w3-bar-item w3-button w3-hover-white">Menu de Atendimentos</a>
             <a href="LogoutServlet" class="w3-bar-item w3-button w3-hover-white">Sair</a>
           </div>
         </nav>
