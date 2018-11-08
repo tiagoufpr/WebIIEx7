@@ -53,7 +53,8 @@
             <h3 class="w3-padding-64"><b>Menu</b></h3>
           </div>
           <div class="w3-bar-block">
-            <a href="ClientesServlet" class="w3-bar-item w3-button w3-hover-white">Cadastro de Clientes</a>
+            <a href="AtendimentoServlet" class="w3-bar-item w3-button w3-hover-white">Listar Atendimentos</a>
+            <a href="AtendimentoServlet?action=atender" class="w3-bar-item w3-button w3-hover-white">Efetuar novo Atendimento</a>
             <a href="LogoutServlet" class="w3-bar-item w3-button w3-hover-white">Sair</a>
           </div>
         </nav>

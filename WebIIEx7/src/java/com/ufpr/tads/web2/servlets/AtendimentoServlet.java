@@ -56,11 +56,15 @@ public class AtendimentoServlet extends HttpServlet {
 
                 if (action != null) {
                     switch (action) {
+                        case "atender":
+                            rd = getServletContext().getRequestDispatcher("/atendimento.jsp");
+                            rd.forward(request, response);
+                            break;
                         case "show":
                             id = Integer.parseInt(request.getParameter("id"));
                             atendimento = AtendimentoFacade.buscar(id);
                             request.setAttribute("visualizar", atendimento);
-                            rd = getServletContext().getRequestDispatcher("/atendimentosVisualizar.jsp");
+                            rd = getServletContext().getRequestDispatcher("/atendimentoDetalhes.jsp");
                             rd.forward(request, response);
                             break;
                         case "formUpdate":

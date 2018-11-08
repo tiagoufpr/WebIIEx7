@@ -53,8 +53,8 @@
           </div>
           <div class="w3-bar-block">
             <a href="ClientesServlet" class="w3-bar-item w3-button w3-hover-white">Cadastro de Clientes</a>
-            <a href="AtendimentoServlet" class="w3-bar-item w3-button w3-hover-white">Cadastro de novos atendimentos</a>
-            <a href="atendimento.jsp" class="w3-bar-item w3-button w3-hover-white">Menu de Atendimentos</a>
+            <a href="AtendimentoServlet" class="w3-bar-item w3-button w3-hover-white">Listar Atendimentos</a>
+            <a href="AtendimentoServlet?action=atender" class="w3-bar-item w3-button w3-hover-white">Efetuar novo Atendimento</a>
             <a href="LogoutServlet" class="w3-bar-item w3-button w3-hover-white">Sair</a>
           </div>
         </nav>
@@ -66,20 +66,22 @@
             <br/>            
             <table>
                 <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Email</th>
-                    <th colspan="3">Ações</th>
+                    <th>Data/Hora</th>
+                    <th>Produto</th>
+                    <th>Cliente</th>
+                    <th>Detalhes</th>
                 </tr>
 
                 <c:forEach items="${listar}" var="atendimento">
                     <tr>
                     <td> ${atendimento.dtHrAtendimento} </td> 
-                    <td> ${atendimento.dscAtendimento} </td> 
-                    <td> ${atendimento.resAtendimento} </td>
+                    <td> ${atendimento.idProduto} </td> 
+                    <td> ${atendimento.idCliente} </td>
                     <td> <a href="AtendimentoServlet?action=show&id=${atendimento.idAtendimento}"><img src="Imagens/view.jpg" height="25" width="25px"></a></td>
+<!--
                     <td> <a href="AtendimentoServlet?action=formUpdate&id=${atendimento.idAtendimento}"><img src="Imagens/update.png" height="25" width="25px"></a></td>
                     <td> <a href="#void" onclick="jsRemover(${atendimento.idAtendimento});"><img src="Imagens/remove.png" height="25" width="25px"></a></td>
+-->
                     </tr>
                 </c:forEach>
             </table>
