@@ -43,8 +43,9 @@ public class GeradorRelatorio extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try  {
-            Connection con = null;            
+        Connection con = null; 
+        
+        try  {     
             HttpSession session = request.getSession();
             LoginBean loginBean = (LoginBean) session.getAttribute("login");
            
@@ -134,9 +135,7 @@ public class GeradorRelatorio extends HttpServlet {
                 try { con.close(); } catch (Exception e) { }
             }
         }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    }   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -174,5 +173,4 @@ public class GeradorRelatorio extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
