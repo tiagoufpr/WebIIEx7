@@ -47,6 +47,8 @@
             <a href="ClientesServlet" class="w3-bar-item w3-button w3-hover-white">Cadastro de Clientes</a>
             <a href="AtendimentoServlet" class="w3-bar-item w3-button w3-hover-white">Listar Atendimentos</a>
             <a href="AtendimentoServlet?action=atender" class="w3-bar-item w3-button w3-hover-white">Efetuar novo Atendimento</a>
+            <a href="GeradorRelatorio?action=todosClientes">Relatório - Todos os clientes</a>
+            <a href="GeradorRelatorio?action=AtendimentosResolvidos">Relatório - Atendimentos Resolvidos</a>
             <a href="LogoutServlet" class="w3-bar-item w3-button w3-hover-white">Sair</a>
           </div>
         </nav>

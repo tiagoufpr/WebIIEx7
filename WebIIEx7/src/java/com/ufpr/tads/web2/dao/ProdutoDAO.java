@@ -44,4 +44,64 @@ public class ProdutoDAO {
         
         return resultados;
     }
+
+    public Produto selectProdutoEspecifico(int id) throws SQLException {
+        Produto resultado = new Produto();
+        
+        String sql = "SELECT * FROM tb_produto WHERE id_produto = (?) LIMIT 1;";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setInt(1, id);
+
+        ResultSet rs = st.executeQuery();
+        
+        while (rs.next()) {
+            resultado.setIdProduto(rs.getInt("id_produto"));
+            resultado.setNomeProduto(rs.getString("nome_produto"));            
+            
+            return resultado;
+        }
+        return null;
+    }
+
+    public void removeProdutoEspecifico(int id) throws SQLException {        
+        try{
+            String sql = "DELETE FROM tb_produto WHERE id_produto = (?) LIMIT 1;";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, id);
+
+            st.executeUpdate();
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void atualizaProduto(Produto p) throws SQLException {        
+        try {
+            String sql = "UPDATE tb_produto SET nome_produto = ? WHERE id_produto = ?";
+            
+            PreparedStatement st = con.prepareStatement(sql);
+            
+            st.setString(1, p.getNomeProduto());
+            st.setInt(2, p.getIdProduto());
+
+            st.executeUpdate();
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void criarProduto(Produto p) throws SQLException {        
+        try {
+            String sql = "INSERT INTO tb_produto (nome_produto)" + 
+                        " VALUES ((?))";
+            
+            PreparedStatement st = con.prepareStatement(sql);
+            
+            st.setString(1, p.getNomeProduto());
+
+            st.executeUpdate();
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

@@ -52,7 +52,7 @@ public class AtendimentoServlet extends HttpServlet {
                 Atendimento atendimento;
                 List<Atendimento> atendimentos;
                 RequestDispatcher rd;
-                String action = request.getParameter("action");                
+                String action = request.getParameter("action");
 
                 if (action != null) {
                     switch (action) {
