@@ -33,7 +33,7 @@ public class ProdutoDAO {
         List<Produto> resultados = new ArrayList<>();
         
         Client client = ClientBuilder.newClient();
-        String uriWS = "http://localhost:8080/WEB%20II%20Ex%2042/webresources";
+        String uriWS = "http://localhost:8080/WEBIIEx7/webresources";
         
         Response resp = client.target(uriWS)
             .path("ProdutoService/buscarTodos")
@@ -55,7 +55,7 @@ public class ProdutoDAO {
     
     public Produto selectProdutoEspecifico(int id) {
         Client client = ClientBuilder.newClient();
-        String uriWS = "http://localhost:8080/WEB%20II%20Ex%2042/webresources";
+        String uriWS = "http://localhost:8080/WEBIIEx7/webresources";
         Response resp = client.target(uriWS)
             .path("ProdutoService/buscarEspecifico")
             .request(MediaType.APPLICATION_JSON)
@@ -68,7 +68,7 @@ public class ProdutoDAO {
     
     public void removeProduto(int id) {
         Client client = ClientBuilder.newClient();
-        String uriWS = "http://localhost:8080/WEB%20II%20Ex%2042/webresources";
+        String uriWS = "http://localhost:8080/WEBIIEx7/webresources";
         client.target(uriWS)
             .path("ProdutoService/removerProdutoEspecifico")
             .request(MediaType.APPLICATION_JSON)
@@ -81,7 +81,7 @@ public class ProdutoDAO {
         produto.setNomeProduto(nome);
                 
         Client client = ClientBuilder.newClient();
-        String uriWS = "http://localhost:8080/WEB%20II%20Ex%2042/webresources";
+        String uriWS = "http://localhost:8080/WEBIIEx7/webresources";
         client.target(uriWS)
             .path("ProdutoService/atualizarProduto")
             .request(MediaType.APPLICATION_JSON)
@@ -93,7 +93,7 @@ public class ProdutoDAO {
         produto.setNomeProduto(p.getNomeProduto());
 
         Client client = ClientBuilder.newClient();
-        String uriWS = "http://localhost:8080/WEB%20II%20Ex%2042/webresources";
+        String uriWS = "http://localhost:8080/WEBIIEx7/webresources";
         client.target(uriWS)
                 .path("ProdutoService/criarProduto")
                 .request(MediaType.APPLICATION_JSON)

@@ -55,7 +55,7 @@ public class GeradorRelatorio extends HttpServlet {
                 String action = request.getParameter("action");
 
                 // Conexão com o banco
-                Class.forName("org.postgresql.Driver");
+                Class.forName("com.mysql.jdbc.Driver");
                 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/WEB2", "root", "");
 
                 if (action != null) {

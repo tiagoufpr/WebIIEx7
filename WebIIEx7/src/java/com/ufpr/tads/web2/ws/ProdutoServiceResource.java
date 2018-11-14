@@ -15,7 +15,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.POST;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
@@ -77,18 +76,18 @@ public class ProdutoServiceResource {
     }
 
     @PUT
-    @Path("/atualizarProduto/{produto}")
+    @Path("/atualizarProduto")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void putProduto(@PathParam("produto") Produto p) throws SQLException, ClassNotFoundException {
+    public void putProduto(Produto p) throws SQLException, ClassNotFoundException {
         ProdutoDAO dao = new ProdutoDAO();
         
         dao.atualizaProduto(p);
     }
 
     @POST
-    @Path("/criarProduto/{produto}")
+    @Path("/criarProduto")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void postProduto(@PathParam("produto") Produto p) throws SQLException, ClassNotFoundException {
+    public void postProduto(Produto p) throws SQLException, ClassNotFoundException {
         ProdutoDAO dao = new ProdutoDAO();
         
         dao.criarProduto(p);
